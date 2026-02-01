@@ -46,8 +46,8 @@
         "Convex dev server can be started with 'npx convex dev'"
       ],
       "priority": 3,
-      "passes": false,
-      "notes": "Run 'npx convex dev --once' to initialize"
+      "passes": true,
+      "notes": "Convex successfully initialized. .env.local created with deployment credentials."
     },
     {
       "id": "US-004",
