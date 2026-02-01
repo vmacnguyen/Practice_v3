@@ -2,6 +2,286 @@
 
 This document provides a detailed, machine-readable implementation plan for the "Practice" mobile application. It is designed to guide an AI coding agent through the development process.
 
+---
+
+## Agent Workflow: The Ralph Wiggum Approach
+
+This project uses the **Ralph Wiggum technique** for AI-assisted development—a methodology built on the insight that **iteration beats perfection**. The name comes from The Simpsons character who is perpetually confused, always making mistakes, but never stops trying.
+
+> "Ralph is a Bash loop." — Geoffrey Huntley
+
+### Core Principles
+
+1. **One Issue Per Session**: Work on exactly ONE user story per agent session
+2. **Small, Atomic Tasks**: Each user story should be completable in a single focused effort
+3. **Strong Feedback Loops**: Tests, typechecks, and lints must pass before declaring victory
+4. **Persistent Progress**: Always commit or document progress before ending a session
+
+### Session Workflow
+
+Each agent session follows this exact workflow:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  1. READ user_stories.json                                      │
+│  2. FIND highest priority story where passes=false              │
+│  3. IMPLEMENT the acceptance criteria                           │
+│  4. RUN validation checks (typecheck, lint, tests)              │
+│  5. IF all pass → UPDATE passes=true, COMMIT changes            │
+│     ELSE → UPDATE notes with context, COMMIT notes              │
+│  6. END session                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Step 1: Select the Next User Story
+
+At the start of each session:
+
+```bash
+# Read and parse user_stories.json
+# Find the FIRST story (lowest ID) where:
+#   - passes = false
+#   - All blocking dependencies (if any) have passes = true
+```
+
+**Priority Rules:**
+- Always work on the lowest-numbered incomplete story
+- Never skip ahead to "easier" stories
+- Hard problems first—they often unblock multiple downstream stories
+
+### Step 2: Implement the Story
+
+For the selected user story:
+
+1. **Read the acceptance criteria** carefully
+2. **Reference this guide** for implementation details
+3. **Write the code** following the patterns in this document
+4. **Keep changes focused** on the single story—avoid scope creep
+
+### Step 3: Run Validation Checks
+
+Before marking a story complete, ALL checks must pass:
+
+```bash
+# TypeScript compilation
+npx tsc --noEmit
+
+# Linting
+npx eslint . --ext .ts,.tsx
+
+# Unit tests (if applicable to the story)
+npm test
+
+# Convex validation (for backend stories)
+npx convex dev --once
+
+# App builds without errors
+npx expo start --no-dev --minify
+```
+
+**Validation Matrix by Story Type:**
+
+| Story Type | Typecheck | Lint | Tests | Convex | Build |
+|------------|-----------|------|-------|--------|-------|
+| Config files | ✅ | ✅ | ✅ | - | - |
+| Convex backend | ✅ | ✅ | - | ✅ | - |
+| React components | ✅ | ✅ | ✅ | - | ✅ |
+| Utility functions | ✅ | ✅ | ✅ | - | - |
+| Full screens | ✅ | ✅ | ✅ | - | ✅ |
+
+### Step 4: Update User Story Status
+
+#### On Success (All Checks Pass)
+
+Update `user_stories.json`:
+
+```json
+{
+  "id": "US-XXX",
+  "passes": true,
+  "notes": ""
+}
+```
+
+#### On Failure (Any Check Fails)
+
+Update `user_stories.json` with context for the next session:
+
+```json
+{
+  "id": "US-XXX",
+  "passes": false,
+  "notes": "TypeScript error in VideoRecorder.tsx:45 - CameraView type mismatch. Need to check expo-camera version compatibility. Attempted fix: updating @types/expo-camera but peer dependency conflict with expo@51."
+}
+```
+
+**Notes Field Best Practices:**
+- Include specific file paths and line numbers
+- Document what was attempted and why it failed
+- List any external blockers (missing API keys, dependency issues)
+- Provide context for the next agent session to continue
+
+### Step 5: Git Commit Protocol
+
+**Every session MUST end with a git commit**, regardless of success or failure.
+
+#### Successful Implementation
+
+```bash
+git add <specific files changed>
+git commit -m "$(cat <<'EOF'
+US-XXX: <Story title>
+
+- Implemented <brief description>
+- All acceptance criteria met
+- Typecheck: ✅ Lint: ✅ Tests: ✅
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)"
+```
+
+#### Work In Progress (Checks Failed)
+
+```bash
+git add user_stories.json
+git commit -m "$(cat <<'EOF'
+US-XXX: WIP - <Story title>
+
+- Progress: <what was completed>
+- Blocker: <what's preventing completion>
+- Next steps documented in user_stories.json notes
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)"
+```
+
+#### No Code Changes (Research/Investigation Only)
+
+```bash
+git add user_stories.json
+git commit -m "$(cat <<'EOF'
+US-XXX: Investigation notes added
+
+- Investigated: <what was researched>
+- Findings documented in user_stories.json notes
+- Ready for implementation in next session
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+EOF
+)"
+```
+
+### Backpressure: Creating Quality Gates
+
+The Ralph Wiggum approach relies on **backpressure**—automated checks that reject invalid work. Configure these gates:
+
+#### 1. TypeScript Strict Mode
+
+`tsconfig.json`:
+```json
+{
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  }
+}
+```
+
+#### 2. ESLint Configuration
+
+`.eslintrc.js`:
+```javascript
+module.exports = {
+  extends: ['expo', 'prettier'],
+  rules: {
+    '@typescript-eslint/no-unused-vars': 'error',
+    '@typescript-eslint/explicit-function-return-type': 'warn',
+  },
+};
+```
+
+#### 3. Pre-commit Hooks (Optional)
+
+If available, configure hooks to block commits when checks fail:
+```bash
+# .husky/pre-commit
+npx tsc --noEmit && npx eslint . --ext .ts,.tsx
+```
+
+### Common Patterns for Handling Blockers
+
+#### External Dependency Issues
+
+```json
+{
+  "notes": "BLOCKED: expo-camera@14.x has breaking changes. Need to either: (1) downgrade to 13.x, (2) update CameraView usage per migration guide at https://docs.expo.dev/versions/latest/sdk/camera/"
+}
+```
+
+#### Missing Prerequisites
+
+```json
+{
+  "notes": "BLOCKED: Requires US-007 (Convex schema) to be completed first. Schema file doesn't exist yet."
+}
+```
+
+#### Ambiguous Requirements
+
+```json
+{
+  "notes": "CLARIFICATION NEEDED: Acceptance criteria says 'sport picker at top' but Figma shows it in header. Implemented in header per Figma. May need revision if PRD takes precedence."
+}
+```
+
+### Anti-Patterns to Avoid
+
+| Anti-Pattern | Why It's Bad | Instead Do |
+|--------------|--------------|------------|
+| Working on multiple stories | Increases complexity, harder to debug | One story per session |
+| Skipping failing tests | Technical debt accumulates | Fix tests or document blocker |
+| Large commits | Hard to review, hard to revert | Atomic commits per story |
+| Empty notes on failure | Next session has no context | Always document blockers |
+| Guessing at requirements | May implement wrong thing | Document ambiguity, ask for clarification |
+| Hardcoding values | Creates future bugs | Use config/env files |
+
+### Session Checklist
+
+Use this checklist at the end of every session:
+
+```markdown
+## Session End Checklist
+
+- [ ] Selected lowest-priority incomplete story
+- [ ] Implemented all acceptance criteria (or documented blockers)
+- [ ] Ran typecheck: `npx tsc --noEmit`
+- [ ] Ran linter: `npx eslint . --ext .ts,.tsx`
+- [ ] Ran tests: `npm test` (if applicable)
+- [ ] Updated user_stories.json (passes flag and/or notes)
+- [ ] Created git commit with appropriate message
+- [ ] Verified commit was successful
+```
+
+### Reference: User Story JSON Schema
+
+```typescript
+interface UserStory {
+  id: string;           // Format: "US-XXX"
+  title: string;        // Brief imperative title
+  description: string;  // User story format or developer task
+  acceptanceCriteria: string[];  // Testable requirements
+  priority: number;     // Lower = higher priority (1 is highest)
+  passes: boolean;      // true when ALL criteria met and checks pass
+  notes: string;        // Context for next session (blockers, progress, etc.)
+}
+```
+
+---
+
 ## Prerequisites
 
 Before starting implementation, ensure:
@@ -2686,11 +2966,69 @@ Execute phases in order, with dependencies noted:
 
 ## Notes for AI Agent
 
-1. **Follow the order**: Complete each task fully before moving to the next.
-2. **Test incrementally**: Verify each component works before building dependent features.
-3. **Handle errors gracefully**: Implement proper error handling at each layer.
-4. **Type safety**: Use TypeScript strictly throughout.
-5. **Reference Figma**: The onboarding flow should match the FigmaMakePrototypes directory designs.
-6. **Environment variables**: Never hardcode secrets; always use environment variables.
-7. **Convex patterns**: Follow Convex best practices for queries, mutations, and actions.
-8. **Mobile considerations**: Test on both iOS and Android; handle platform differences.
+### Core Workflow (Ralph Wiggum Style)
+
+1. **One story per session**: Select the highest-priority incomplete story from `user_stories.json`
+2. **Implement fully or document blockers**: Either complete all acceptance criteria OR update notes with context
+3. **Run all validation checks**: Typecheck, lint, tests must pass before marking `passes: true`
+4. **Always commit**: End every session with a git commit (success OR work-in-progress)
+5. **Update the JSON**: Always update `user_stories.json` with current status
+
+### Implementation Guidelines
+
+1. **Follow the order**: Complete each task fully before moving to the next
+2. **Test incrementally**: Verify each component works before building dependent features
+3. **Handle errors gracefully**: Implement proper error handling at each layer
+4. **Type safety**: Use TypeScript strictly throughout—no `any` types without justification
+5. **Reference Figma**: The onboarding flow should match the FigmaMakePrototypes directory designs
+6. **Environment variables**: Never hardcode secrets; always use environment variables
+7. **Convex patterns**: Follow Convex best practices for queries, mutations, and actions
+8. **Mobile considerations**: Test on both iOS and Android; handle platform differences
+
+### Validation Commands Reference
+
+```bash
+# TypeScript check
+npx tsc --noEmit
+
+# Lint check
+npx eslint . --ext .ts,.tsx
+
+# Run tests
+npm test
+
+# Convex validation
+npx convex dev --once
+
+# Expo build check
+npx expo start --no-dev --minify
+```
+
+### Git Commit Message Format
+
+```
+US-XXX: <Title>
+
+- <Change 1>
+- <Change 2>
+- Typecheck: ✅/❌ Lint: ✅/❌ Tests: ✅/❌
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+```
+
+### When Stuck
+
+1. Document the blocker in `user_stories.json` notes field
+2. Include: file path, line number, error message, what was attempted
+3. Commit the notes update
+4. End the session—the next session will have context to continue
+
+### Success Criteria
+
+A user story is complete (`passes: true`) when:
+- ✅ All acceptance criteria are implemented
+- ✅ TypeScript compiles without errors
+- ✅ ESLint passes without errors
+- ✅ Relevant tests pass
+- ✅ App builds successfully (for UI stories)
+- ✅ Changes are committed to git
