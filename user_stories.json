@@ -1,0 +1,837 @@
+{
+  "project": "Practice App",
+  "version": "1.0.0",
+  "description": "User stories for AI agent implementation of the Practice mobile application",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Initialize Expo React Native project",
+      "description": "As a developer, I need to initialize a new Expo React Native project with TypeScript template as the foundation for the Practice app",
+      "acceptanceCriteria": [
+        "Expo project created with TypeScript template",
+        "Project runs successfully with 'npx expo start'",
+        "Basic App.tsx renders without errors",
+        "package.json contains expo and typescript dependencies"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": "This is the first step - all other stories depend on this"
+    },
+    {
+      "id": "US-002",
+      "title": "Install and configure core dependencies",
+      "description": "As a developer, I need to install all required dependencies including Gluestack UI, React Navigation, Convex, and Expo media libraries",
+      "acceptanceCriteria": [
+        "@gluestack-ui/themed and @gluestack-ui/config installed",
+        "@react-navigation/native, @react-navigation/bottom-tabs, @react-navigation/native-stack installed",
+        "react-native-screens and react-native-safe-area-context installed",
+        "convex installed",
+        "expo-camera, expo-image-picker, expo-av, expo-file-system installed",
+        "expo-secure-store and expo-constants installed",
+        "All dependencies resolve without conflicts",
+        "App still builds and runs"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": "Run npm install commands for each package group"
+    },
+    {
+      "id": "US-003",
+      "title": "Initialize Convex backend",
+      "description": "As a developer, I need to initialize Convex in the project to set up the backend-as-a-service infrastructure",
+      "acceptanceCriteria": [
+        "convex/ directory created in project root",
+        "convex/_generated/ folder exists with api.ts and dataModel.ts",
+        "convex.json configuration file exists",
+        "Convex dev server can be started with 'npx convex dev'"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": "Run 'npx convex dev --once' to initialize"
+    },
+    {
+      "id": "US-004",
+      "title": "Create project directory structure",
+      "description": "As a developer, I need the complete directory structure created for the app following Expo Router conventions",
+      "acceptanceCriteria": [
+        "app/ directory with (auth)/, (main)/, onboarding/ subdirectories created",
+        "app/(main)/(tabs)/ directory created for tab navigation",
+        "app/(main)/analysis/ directory created for analysis detail screen",
+        "components/ directory with ui/, video/, analysis/, common/, navigation/ subdirectories",
+        "config/ directory created",
+        "hooks/ directory created",
+        "types/ directory created",
+        "utils/ directory created",
+        "Each directory contains a .gitkeep or placeholder file"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": "Create all directories as specified in the implementation guide"
+    },
+    {
+      "id": "US-005",
+      "title": "Create environment configuration",
+      "description": "As a developer, I need environment configuration files to manage app settings and secrets",
+      "acceptanceCriteria": [
+        "config/env.ts created with ENV object exporting all configuration values",
+        "MAX_VIDEO_DURATION_SECONDS defaults to 60",
+        "MAX_VIDEO_FILE_SIZE_MB defaults to 150",
+        "AI_ANALYSIS_TIMEOUT_MS defaults to 60000",
+        "AI_PROCESSING_NOTIFICATION_MS defaults to 15000",
+        "VIDEO_QUALITY set to '720p'",
+        "VIDEO_FPS set to 30",
+        "CONVEX_URL reads from EXPO_PUBLIC_CONVEX_URL",
+        ".env.local.example file created with all required environment variables documented",
+        "TypeScript types are correct"
+      ],
+      "priority": 5,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-006",
+      "title": "Create sports configuration",
+      "description": "As a developer, I need a sports configuration file that defines all supported sports and their action types",
+      "acceptanceCriteria": [
+        "config/sports-config.ts created",
+        "SportConfig interface defined with id, name, icon, and actions fields",
+        "SPORTS_CONFIG object contains all 8 sports: Tennis, Volleyball, Pickleball, Badminton, Golf, Weightlifting, Ballet, Snowboarding",
+        "Each sport has correct action types as specified in PRD",
+        "SPORTS_LIST export provides array of all sports",
+        "getSportById function returns sport config or undefined",
+        "getActionsForSport function returns actions array or empty array",
+        "All exports are properly typed"
+      ],
+      "priority": 6,
+      "passes": false,
+      "notes": "Reference PRD Section 3.3 for exact sport/action mappings"
+    },
+    {
+      "id": "US-007",
+      "title": "Define Convex database schema",
+      "description": "As a developer, I need the Convex database schema defined with users and analyses tables",
+      "acceptanceCriteria": [
+        "convex/schema.ts created with defineSchema",
+        "users table defined with email, preferredSport, onboardingCompleted, createdAt, updatedAt fields",
+        "users table has by_email index",
+        "analyses table defined with all required fields: userId, videoStorageId, videoUrl, sport, identifiedActions, overallFeedback, rawResponse, status, sessionNumber, errorMessage, createdAt, updatedAt",
+        "identifiedActions is array of objects with action, timestamp, analysis, practiceTips fields",
+        "status field is union of 'pending', 'processing', 'completed', 'failed'",
+        "analyses table has by_user, by_user_and_created, by_user_and_status indexes",
+        "Schema passes Convex validation"
+      ],
+      "priority": 7,
+      "passes": false,
+      "notes": "Use Convex validators (v.string(), v.array(), etc.)"
+    },
+    {
+      "id": "US-008",
+      "title": "Implement Convex authentication functions",
+      "description": "As a developer, I need Convex auth functions for user signup, login, and profile management",
+      "acceptanceCriteria": [
+        "convex/auth.ts created",
+        "signUp mutation creates user profile record",
+        "signUp checks for existing user and throws ConvexError if exists",
+        "getCurrentUser query returns authenticated user or null",
+        "updatePreferredSport mutation updates user's preferred sport",
+        "completeOnboarding mutation sets onboardingCompleted to true",
+        "All mutations validate authentication using getAuthUserId",
+        "All functions properly typed"
+      ],
+      "priority": 8,
+      "passes": false,
+      "notes": "Use @convex-dev/auth/server for authentication"
+    },
+    {
+      "id": "US-009",
+      "title": "Implement Convex file storage functions",
+      "description": "As a developer, I need Convex functions to handle video file uploads and retrieval",
+      "acceptanceCriteria": [
+        "convex/storage.ts created",
+        "generateUploadUrl mutation returns upload URL for authenticated users",
+        "generateUploadUrl throws ConvexError if not authenticated",
+        "getVideoUrl query returns URL for given storage ID",
+        "Functions properly typed with Convex types"
+      ],
+      "priority": 9,
+      "passes": false,
+      "notes": "Use ctx.storage.generateUploadUrl() and ctx.storage.getUrl()"
+    },
+    {
+      "id": "US-010",
+      "title": "Implement analysis CRUD functions",
+      "description": "As a developer, I need Convex functions to create, read, and manage analysis records",
+      "acceptanceCriteria": [
+        "convex/analyses.ts created",
+        "createAnalysis mutation creates analysis with pending status",
+        "createAnalysis calculates sessionNumber for the day",
+        "createAnalysis schedules AI analysis via scheduler",
+        "getAnalysis query returns single analysis with authorization check",
+        "getAnalysisHistory query returns paginated results with cursor",
+        "getUserStats query returns totalSessions, totalMinutes, recentSession",
+        "retryAnalysis mutation resets failed analysis to pending and reschedules",
+        "updateAnalysisResult internal mutation updates completed analysis",
+        "markAnalysisFailed internal mutation marks analysis as failed with error",
+        "updateAnalysisStatus internal mutation updates status field",
+        "getAnalysisInternal internal query for use by actions",
+        "All user-facing functions enforce authorization (users can only access their own data)"
+      ],
+      "priority": 10,
+      "passes": false,
+      "notes": "Use internalMutation and internalQuery for functions called by actions"
+    },
+    {
+      "id": "US-011",
+      "title": "Create AI prompt template",
+      "description": "As a developer, I need a configurable prompt template for the AI analysis service",
+      "acceptanceCriteria": [
+        "convex/services/promptTemplate.ts created",
+        "AI_PROMPT_TEMPLATE constant contains full prompt with {sport} and {action_types} placeholders",
+        "Prompt instructs AI to identify actions, provide timestamps, analysis, and practice tips",
+        "Prompt specifies JSON response schema with identified_actions array and overall_feedback",
+        "buildPrompt function replaces placeholders with actual values",
+        "buildPrompt accepts sport string and actionTypes array"
+      ],
+      "priority": 11,
+      "passes": false,
+      "notes": "Follow exact prompt structure from PRD Section 4"
+    },
+    {
+      "id": "US-012",
+      "title": "Implement Gemini adapter",
+      "description": "As a developer, I need a Gemini API adapter that sends videos and prompts to Gemini and parses responses",
+      "acceptanceCriteria": [
+        "convex/services/adapters/geminiAdapter.ts created",
+        "AnalysisResult interface defined with identified_actions and overall_feedback",
+        "analyzeWithGemini function accepts prompt and videoUrl",
+        "Function fetches video and converts to base64",
+        "Function determines correct mime type (mp4 or quicktime)",
+        "Function calls Gemini 1.5 Pro with video and prompt",
+        "Function extracts JSON from response (handles markdown code blocks)",
+        "Function validates response schema",
+        "Function throws descriptive errors for invalid responses",
+        "GEMINI_API_KEY read from process.env"
+      ],
+      "priority": 12,
+      "passes": false,
+      "notes": "Use @google/generative-ai package"
+    },
+    {
+      "id": "US-013",
+      "title": "Implement AI analysis service",
+      "description": "As a developer, I need the analysis service that orchestrates video analysis with retry logic",
+      "acceptanceCriteria": [
+        "convex/services/analysisService.ts created",
+        "SPORTS_ACTIONS constant maps sport IDs to action arrays",
+        "runAnalysis internal action fetches analysis, builds prompt, calls Gemini",
+        "runAnalysis updates status to 'processing' before analysis",
+        "runAnalysis implements retry logic with MAX_RETRIES = 1",
+        "On success, calls updateAnalysisResult with transformed data",
+        "On failure after retries, calls markAnalysisFailed with error message",
+        "practiceTips field transformed from practice_tips in response"
+      ],
+      "priority": 13,
+      "passes": false,
+      "notes": "Use internalAction for Convex action that makes external API calls"
+    },
+    {
+      "id": "US-014",
+      "title": "Create root layout with providers",
+      "description": "As a developer, I need the root layout that wraps the app with Convex and Gluestack providers",
+      "acceptanceCriteria": [
+        "app/_layout.tsx created",
+        "ConvexProvider wraps entire app with ConvexReactClient",
+        "GluestackUIProvider wraps app with config",
+        "Expo Router Stack configured with screens: index, (auth), onboarding, (main)",
+        "All screens have headerShown: false",
+        "App renders without provider errors"
+      ],
+      "priority": 14,
+      "passes": false,
+      "notes": "Import config from @gluestack-ui/config"
+    },
+    {
+      "id": "US-015",
+      "title": "Create tab navigation layout",
+      "description": "As a developer, I need the bottom tab navigation with Home, Practice, and History tabs",
+      "acceptanceCriteria": [
+        "app/(main)/(tabs)/_layout.tsx created",
+        "Tabs component from expo-router configured",
+        "Home tab (index) with Home icon on left",
+        "Practice tab with Video icon in center with prominent styling",
+        "History tab with History icon on right",
+        "Tab bar height is 80 with proper padding",
+        "Practice tab has colored background (primary) and rounded corners",
+        "Icons use lucide-react-native"
+      ],
+      "priority": 15,
+      "passes": false,
+      "notes": "Practice tab should be visually prominent as main CTA"
+    },
+    {
+      "id": "US-016",
+      "title": "Implement login screen",
+      "description": "As a user, I want to log in with my email and password so I can access my practice history",
+      "acceptanceCriteria": [
+        "app/(auth)/login.tsx created",
+        "Email input field with email keyboard type and no auto-capitalize",
+        "Password input field with secure text entry",
+        "Sign In button that calls signIn from useAuthActions",
+        "Loading state while signing in",
+        "Error message displayed on failure",
+        "Link to signup screen",
+        "On success, navigates to (main)/(tabs)",
+        "Uses Gluestack UI components"
+      ],
+      "priority": 16,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-017",
+      "title": "Implement signup screen",
+      "description": "As a new user, I want to create an account with email and password so I can use the app",
+      "acceptanceCriteria": [
+        "app/(auth)/signup.tsx created",
+        "Email input field",
+        "Password input field",
+        "Confirm password input field",
+        "Password match validation before submit",
+        "Password minimum length validation (8 characters)",
+        "Sign Up button that calls signIn with flow: 'signUp'",
+        "Loading state while signing up",
+        "Error message displayed on failure",
+        "Link to login screen",
+        "On success, navigates to /onboarding"
+      ],
+      "priority": 17,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-018",
+      "title": "Implement sport selection screen",
+      "description": "As a new user, I want to select my primary sport during onboarding so the app knows my preferences",
+      "acceptanceCriteria": [
+        "app/onboarding/sport-selection.tsx created",
+        "Displays heading 'What do you practice?'",
+        "Lists all 8 sports from SPORTS_LIST as selectable items",
+        "Selected sport shows visual highlight (border and background color)",
+        "Continue button disabled until sport selected",
+        "Calls updatePreferredSport mutation on continue",
+        "Navigates to /onboarding/tutorial on success"
+      ],
+      "priority": 18,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-019",
+      "title": "Implement tutorial screen",
+      "description": "As a new user, I want to see a tutorial explaining how to use the app",
+      "acceptanceCriteria": [
+        "app/onboarding/tutorial.tsx created",
+        "Two-step tutorial with step indicator dots",
+        "Step 1: Record or Upload - explains video capture/upload",
+        "Step 2: Get AI Feedback - explains AI analysis",
+        "Each step has icon, title, and description",
+        "Next button advances to next step",
+        "Get Started button on final step",
+        "Calls completeOnboarding mutation on final step",
+        "Navigates to (main)/(tabs) on completion"
+      ],
+      "priority": 19,
+      "passes": false,
+      "notes": "Use Video and Brain icons from lucide-react-native"
+    },
+    {
+      "id": "US-020",
+      "title": "Create video validation utilities",
+      "description": "As a developer, I need utility functions to validate video files before upload",
+      "acceptanceCriteria": [
+        "utils/video.ts created",
+        "VideoValidationResult interface with valid boolean and optional error string",
+        "validateVideo async function checks file exists and size",
+        "Returns error if file size exceeds MAX_VIDEO_FILE_SIZE_MB",
+        "isValidVideoFormat function checks for .mp4, .mov, .m4v extensions",
+        "Functions handle case-insensitive extension matching"
+      ],
+      "priority": 20,
+      "passes": false,
+      "notes": "Use expo-file-system for file info"
+    },
+    {
+      "id": "US-021",
+      "title": "Create date formatting utilities",
+      "description": "As a developer, I need utility functions for formatting dates and generating session titles",
+      "acceptanceCriteria": [
+        "utils/formatting.ts created",
+        "formatDate function returns full date with time (e.g., 'Jan 15, 2025, 3:30 PM')",
+        "formatDateShort function returns 'Today', 'Yesterday', weekday name, or short date",
+        "generateSessionTitle function returns '{Sport} - {YYYY-MM-DD} - Session {N}' format"
+      ],
+      "priority": 21,
+      "passes": false,
+      "notes": "Use toLocaleDateString with en-US locale"
+    },
+    {
+      "id": "US-022",
+      "title": "Implement video recorder component",
+      "description": "As a user, I want to record practice videos using my phone's camera",
+      "acceptanceCriteria": [
+        "components/video/VideoRecorder.tsx created",
+        "Requests camera and microphone permissions on mount",
+        "Shows permission denied message with back button if not granted",
+        "Displays camera preview using expo-camera CameraView",
+        "Start/stop recording button with visual indicator",
+        "Recording timer showing elapsed time and max duration",
+        "Auto-stops at MAX_VIDEO_DURATION_SECONDS",
+        "Cancel button to return without recording",
+        "Camera flip button (front/back) disabled during recording",
+        "Calls onVideoRecorded callback with video URI on completion"
+      ],
+      "priority": 22,
+      "passes": false,
+      "notes": "Use expo-camera CameraView component"
+    },
+    {
+      "id": "US-023",
+      "title": "Implement practice screen",
+      "description": "As a user, I want to record or upload a practice video and submit it for AI analysis",
+      "acceptanceCriteria": [
+        "app/(main)/(tabs)/practice.tsx created",
+        "Sport selection dropdown using SPORTS_LIST",
+        "Record Video button opens VideoRecorder component",
+        "Upload from Gallery button opens image picker for videos",
+        "Validates uploaded video format (MP4, MOV)",
+        "Validates uploaded video duration (max 60 seconds)",
+        "Validates uploaded video file size (max 150MB)",
+        "Shows error messages for validation failures",
+        "Preview mode after video selected with Analyze button",
+        "Choose Different Video button to reset",
+        "Uploading state with spinner",
+        "Calls generateUploadUrl, uploads video, calls createAnalysis",
+        "Navigates to analysis detail screen on success"
+      ],
+      "priority": 23,
+      "passes": false,
+      "notes": "Use expo-image-picker for gallery selection"
+    },
+    {
+      "id": "US-024",
+      "title": "Implement home screen",
+      "description": "As a user, I want to see my practice stats and quick access to start a new session",
+      "acceptanceCriteria": [
+        "app/(main)/(tabs)/index.tsx created",
+        "Sport picker dropdown at top defaulting to user's preferred sport",
+        "Stats cards showing total sessions and total minutes",
+        "Prominent 'Start Practice Session' CTA button",
+        "Recent session card showing latest analysis",
+        "Recent session card navigates to analysis detail on tap",
+        "Loading spinner while data loads",
+        "Uses getUserStats and getCurrentUser queries"
+      ],
+      "priority": 24,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-025",
+      "title": "Implement analysis detail screen",
+      "description": "As a user, I want to view the full analysis of my practice video with AI feedback",
+      "acceptanceCriteria": [
+        "app/(main)/analysis/[id].tsx created",
+        "Header with back button, sport name, session number, and status badge",
+        "Video player component showing the uploaded video",
+        "Processing state with spinner and 'Analyzing your video...' message",
+        "Shows 'Still processing...' notice after 15 seconds",
+        "Failed state with error message and Retry button",
+        "Completed state shows all identified actions as cards",
+        "Each action card shows: action name, timestamp badge, analysis text, practice tips",
+        "Overall feedback card at bottom with highlighted styling",
+        "Retry button calls retryAnalysis mutation",
+        "Uses getAnalysis query with real-time updates"
+      ],
+      "priority": 25,
+      "passes": false,
+      "notes": "Use expo-av Video component for playback"
+    },
+    {
+      "id": "US-026",
+      "title": "Implement history screen with infinite scroll",
+      "description": "As a user, I want to browse my past practice sessions with endless scrolling",
+      "acceptanceCriteria": [
+        "app/(main)/(tabs)/history.tsx created",
+        "FlatList with analysis history items",
+        "Each item shows: sport, session number, date, status badge, feedback snippet",
+        "Items show up to 3 action badges with '+N more' for additional actions",
+        "Tapping item navigates to analysis detail screen",
+        "Loads more items on scroll (10 items per page)",
+        "Shows loading spinner at bottom while loading more",
+        "Empty state message when no sessions exist",
+        "Uses usePaginatedQuery from Convex"
+      ],
+      "priority": 26,
+      "passes": false,
+      "notes": "Use usePaginatedQuery for efficient pagination"
+    },
+    {
+      "id": "US-027",
+      "title": "Implement profile screen",
+      "description": "As a user, I want to view my profile and log out of the app",
+      "acceptanceCriteria": [
+        "app/(main)/profile.tsx created",
+        "Header with back button and 'Profile' title",
+        "User avatar with email initial",
+        "User email displayed",
+        "Log Out button with red/negative styling",
+        "Log out calls signOut and navigates to login screen",
+        "Uses getCurrentUser query"
+      ],
+      "priority": 27,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-028",
+      "title": "Create auth layout",
+      "description": "As a developer, I need the auth screens layout for the login/signup flow",
+      "acceptanceCriteria": [
+        "app/(auth)/_layout.tsx created",
+        "Stack navigator with login and signup screens",
+        "Headers hidden for clean full-screen auth experience"
+      ],
+      "priority": 28,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-029",
+      "title": "Create onboarding layout",
+      "description": "As a developer, I need the onboarding screens layout",
+      "acceptanceCriteria": [
+        "app/onboarding/_layout.tsx created",
+        "Stack navigator with sport-selection and tutorial screens",
+        "Headers hidden for clean onboarding experience"
+      ],
+      "priority": 29,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-030",
+      "title": "Create main app layout",
+      "description": "As a developer, I need the main app layout that protects authenticated routes",
+      "acceptanceCriteria": [
+        "app/(main)/_layout.tsx created",
+        "Stack navigator with (tabs), analysis/[id], and profile screens",
+        "Redirects to login if user not authenticated",
+        "Redirects to onboarding if onboarding not completed"
+      ],
+      "priority": 30,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-031",
+      "title": "Create app entry point with auth routing",
+      "description": "As a developer, I need the app entry point that routes users based on auth state",
+      "acceptanceCriteria": [
+        "app/index.tsx created",
+        "Checks authentication state on mount",
+        "Redirects to (auth)/login if not authenticated",
+        "Redirects to onboarding if authenticated but onboarding not complete",
+        "Redirects to (main)/(tabs) if authenticated and onboarding complete",
+        "Shows loading state while checking auth"
+      ],
+      "priority": 31,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-032",
+      "title": "Configure app.json for permissions",
+      "description": "As a developer, I need app.json configured with proper permissions for camera, microphone, and photo library",
+      "acceptanceCriteria": [
+        "app.json contains app name 'Practice' and slug 'practice'",
+        "iOS infoPlist contains NSCameraUsageDescription",
+        "iOS infoPlist contains NSMicrophoneUsageDescription",
+        "iOS infoPlist contains NSPhotoLibraryUsageDescription",
+        "Android permissions include CAMERA, RECORD_AUDIO, READ_EXTERNAL_STORAGE",
+        "expo-camera plugin configured with permission strings",
+        "expo-image-picker plugin configured with permission string"
+      ],
+      "priority": 32,
+      "passes": false,
+      "notes": "Permission strings should explain why the app needs access"
+    },
+    {
+      "id": "US-033",
+      "title": "Create TypeScript type definitions",
+      "description": "As a developer, I need TypeScript type definitions for the app's data models",
+      "acceptanceCriteria": [
+        "types/analysis.ts created with Analysis and IdentifiedAction interfaces",
+        "types/sports.ts created with Sport and SportAction types",
+        "types/navigation.ts created with navigation param types",
+        "Types align with Convex schema definitions",
+        "Types exported for use throughout app"
+      ],
+      "priority": 33,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-034",
+      "title": "Create custom hooks for common operations",
+      "description": "As a developer, I need custom hooks to encapsulate common data fetching and auth logic",
+      "acceptanceCriteria": [
+        "hooks/useAuth.ts created with authentication state and actions",
+        "hooks/useAnalysis.ts created with analysis query helpers",
+        "hooks/useVideo.ts created with video recording and upload logic",
+        "Hooks properly handle loading and error states",
+        "Hooks use Convex queries and mutations internally"
+      ],
+      "priority": 34,
+      "passes": false,
+      "notes": "These hooks simplify component code"
+    },
+    {
+      "id": "US-035",
+      "title": "Create loading spinner component",
+      "description": "As a developer, I need a reusable loading spinner component",
+      "acceptanceCriteria": [
+        "components/common/LoadingSpinner.tsx created",
+        "Accepts size prop (small, medium, large)",
+        "Accepts optional text prop to show loading message",
+        "Centers content in container",
+        "Uses Gluestack UI Spinner"
+      ],
+      "priority": 35,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-036",
+      "title": "Create error boundary component",
+      "description": "As a developer, I need an error boundary to gracefully handle runtime errors",
+      "acceptanceCriteria": [
+        "components/common/ErrorBoundary.tsx created",
+        "Catches JavaScript errors in child components",
+        "Displays user-friendly error message",
+        "Provides retry/refresh button",
+        "Logs errors for debugging"
+      ],
+      "priority": 36,
+      "passes": false,
+      "notes": "Use React class component with componentDidCatch"
+    },
+    {
+      "id": "US-037",
+      "title": "Setup Jest testing framework",
+      "description": "As a developer, I need Jest configured for unit testing",
+      "acceptanceCriteria": [
+        "jest, @testing-library/react-native, @testing-library/jest-native installed as dev dependencies",
+        "jest.config.js created with jest-expo preset",
+        "transformIgnorePatterns configured for Expo and Gluestack",
+        "Module name mapper configured for @ alias",
+        "Test script added to package.json"
+      ],
+      "priority": 37,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-038",
+      "title": "Write video utilities unit tests",
+      "description": "As a developer, I need unit tests for video validation utilities",
+      "acceptanceCriteria": [
+        "utils/__tests__/video.test.ts created",
+        "Tests isValidVideoFormat accepts MP4 and MOV (case insensitive)",
+        "Tests isValidVideoFormat rejects invalid formats",
+        "All tests pass"
+      ],
+      "priority": 38,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-039",
+      "title": "Write sports config unit tests",
+      "description": "As a developer, I need unit tests for sports configuration",
+      "acceptanceCriteria": [
+        "config/__tests__/sports-config.test.ts created",
+        "Tests all 8 sports are defined",
+        "Tests each sport has actions",
+        "Tests getSportById returns correct sport or undefined",
+        "Tests getActionsForSport returns actions or empty array",
+        "All tests pass"
+      ],
+      "priority": 39,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-040",
+      "title": "Create .env.local with Convex deployment URL",
+      "description": "As a developer, I need the local environment file configured with the Convex deployment",
+      "acceptanceCriteria": [
+        ".env.local created (gitignored)",
+        "EXPO_PUBLIC_CONVEX_URL set to actual Convex deployment URL",
+        "All optional env vars documented with defaults"
+      ],
+      "priority": 40,
+      "passes": false,
+      "notes": "Deployment URL obtained from Convex dashboard"
+    },
+    {
+      "id": "US-041",
+      "title": "Set Gemini API key in Convex environment",
+      "description": "As a developer, I need the Gemini API key configured in Convex for AI analysis",
+      "acceptanceCriteria": [
+        "GEMINI_API_KEY environment variable set in Convex dashboard",
+        "API key is valid and can make requests to Gemini API",
+        "Key is not exposed in client-side code"
+      ],
+      "priority": 41,
+      "passes": false,
+      "notes": "Set via Convex dashboard Settings > Environment Variables"
+    },
+    {
+      "id": "US-042",
+      "title": "End-to-end smoke test",
+      "description": "As a developer, I need to verify the complete user flow works end-to-end",
+      "acceptanceCriteria": [
+        "App launches without errors",
+        "New user can sign up with email/password",
+        "Onboarding flow completes successfully",
+        "User can record or upload a video",
+        "Video uploads to Convex storage",
+        "AI analysis runs and returns results",
+        "Analysis displays correctly with all sections",
+        "History shows past analyses",
+        "User can log out and log back in"
+      ],
+      "priority": 42,
+      "passes": false,
+      "notes": "Manual testing checklist"
+    },
+    {
+      "id": "US-043",
+      "title": "Configure Convex auth for email/password",
+      "description": "As a developer, I need Convex Auth properly configured for email/password authentication",
+      "acceptanceCriteria": [
+        "convex/auth.config.ts created with proper configuration",
+        "Password provider enabled and configured",
+        "Auth works with signup and login flows",
+        "Session tokens properly managed"
+      ],
+      "priority": 43,
+      "passes": false,
+      "notes": "Follow Convex Auth documentation for setup"
+    },
+    {
+      "id": "US-044",
+      "title": "Add Google Generative AI package",
+      "description": "As a developer, I need the Google Generative AI SDK installed for Gemini integration",
+      "acceptanceCriteria": [
+        "@google/generative-ai package installed",
+        "Package version compatible with Convex runtime",
+        "Types available for TypeScript"
+      ],
+      "priority": 44,
+      "passes": false,
+      "notes": "npm install @google/generative-ai"
+    },
+    {
+      "id": "US-045",
+      "title": "Create video player component",
+      "description": "As a developer, I need a reusable video player component for displaying recorded/uploaded videos",
+      "acceptanceCriteria": [
+        "components/video/VideoPlayer.tsx created",
+        "Accepts videoUrl prop",
+        "Uses expo-av Video component",
+        "Shows native playback controls",
+        "Handles loading and error states",
+        "ResizeMode set to contain"
+      ],
+      "priority": 45,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-046",
+      "title": "Create sport picker component",
+      "description": "As a developer, I need a reusable sport picker dropdown component",
+      "acceptanceCriteria": [
+        "components/analysis/SportPicker.tsx created",
+        "Accepts selectedSport and onSelect props",
+        "Displays all sports from SPORTS_LIST",
+        "Uses Gluestack Select component",
+        "Shows sport name in trigger"
+      ],
+      "priority": 46,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-047",
+      "title": "Create analysis card component",
+      "description": "As a developer, I need a reusable analysis card component for displaying analysis summaries",
+      "acceptanceCriteria": [
+        "components/analysis/AnalysisCard.tsx created",
+        "Accepts analysis data prop",
+        "Displays sport, session number, date, status",
+        "Shows feedback snippet (truncated)",
+        "Pressable with onPress callback",
+        "Styled consistently with app theme"
+      ],
+      "priority": 47,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-048",
+      "title": "Create action feedback component",
+      "description": "As a developer, I need a component to display individual action analysis feedback",
+      "acceptanceCriteria": [
+        "components/analysis/ActionFeedback.tsx created",
+        "Accepts identifiedAction data prop",
+        "Displays action name as heading",
+        "Shows timestamp badge if available",
+        "Displays analysis text",
+        "Lists practice tips with numbers",
+        "Card styling with proper spacing"
+      ],
+      "priority": 48,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-049",
+      "title": "Add profile navigation from home screen",
+      "description": "As a user, I want to access my profile from the home screen",
+      "acceptanceCriteria": [
+        "Profile icon/button added to home screen header",
+        "Tapping profile icon navigates to profile screen",
+        "Uses user icon from lucide-react-native"
+      ],
+      "priority": 49,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-050",
+      "title": "Handle empty states throughout app",
+      "description": "As a user, I want to see helpful messages when there's no data to display",
+      "acceptanceCriteria": [
+        "Home screen shows 'Start your first session' when no sessions exist",
+        "History screen shows 'No practice sessions yet' when empty",
+        "Empty states include CTA to create first session",
+        "Empty states are visually appealing"
+      ],
+      "priority": 50,
+      "passes": false,
+      "notes": ""
+    }
+  ]
+}
