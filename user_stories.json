@@ -14,8 +14,8 @@
         "package.json contains expo and typescript dependencies"
       ],
       "priority": 1,
-      "passes": false,
-      "notes": "This is the first step - all other stories depend on this"
+      "passes": true,
+      "notes": "Expo project successfully initialized with blank-typescript template."
     },
     {
       "id": "US-002",
@@ -32,8 +32,8 @@
         "App still builds and runs"
       ],
       "priority": 2,
-      "passes": false,
-      "notes": "Run npm install commands for each package group"
+      "passes": true,
+      "notes": "Core dependencies installed with --legacy-peer-deps to handle React 19 compatibility issues. Project successfully starts."
     },
     {
       "id": "US-003",
