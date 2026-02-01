@@ -102,9 +102,8 @@
         "getActionsForSport function returns actions array or empty array",
         "All exports are properly typed"
       ],
-      "priority": 6,
-      "passes": false,
-      "notes": "Reference PRD Section 3.3 for exact sport/action mappings"
+      "passes": true,
+      "notes": "Sports configuration file created with all 8 sports and their action types."
     },
     {
       "id": "US-007",
