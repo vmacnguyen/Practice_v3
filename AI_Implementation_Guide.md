@@ -19,19 +19,47 @@ This project uses the **Ralph Wiggum technique** for AI-assisted development—a
 
 ### Session Workflow
 
+
+
 Each agent session follows this exact workflow:
 
+
+
 ```
+
 ┌─────────────────────────────────────────────────────────────────┐
+
 │  1. READ user_stories.json                                      │
+
 │  2. FIND highest priority story where passes=false              │
+
 │  3. IMPLEMENT the acceptance criteria                           │
+
 │  4. RUN validation checks (typecheck, lint, tests)              │
+
 │  5. IF all pass → UPDATE passes=true, COMMIT changes            │
+
 │     ELSE → UPDATE notes with context, COMMIT notes              │
+
 │  6. END session                                                 │
+
 └─────────────────────────────────────────────────────────────────┘
-```
+
+
+
+### Best Practice: Convex Backend Testing
+
+
+
+For stories involving Convex functions (queries, mutations, actions):
+
+1.  **Use `convex-test`**: Do not rely solely on typechecking.
+
+2.  **Mock Data**: Use `t.run(async (ctx) => { ... })` to seed the database with required mock data (e.g., users, storage IDs) before calling the function.
+
+3.  **Verification**: Assert not just the return value, but also the database state (e.g., "did the record get created with the right status?").
+
+
 
 ### Step 1: Select the Next User Story
 
@@ -290,6 +318,7 @@ Before starting implementation, ensure:
 - Convex account created
 - Gemini API key obtained
 - Development environment set up for iOS/Android
+- **Best Practice:** Reference [Convex LLM Documentation](https://docs.convex.dev/llms.txt) for idiomatic Convex implementation and authentication patterns.
 
 ---
 
@@ -2727,7 +2756,7 @@ export function generateSessionTitle(
 
 **Task 4.1.1: Install Testing Dependencies**
 ```bash
-npm install --save-dev jest @testing-library/react-native @testing-library/jest-native
+npm install --save-dev jest @testing-library/react-native @testing-library/jest-native convex-test
 npm install --save-dev @types/jest
 ```
 

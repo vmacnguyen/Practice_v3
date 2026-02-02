@@ -1,34 +1,11 @@
+import { convexAuth } from "@convex-dev/auth/server";
+import { Password } from "@convex-dev/auth/providers/Password";
 import { ConvexError, v } from "convex/values";
 import { mutation, query } from "./_generated/server";
 import { getAuthUserId } from "@convex-dev/auth/server";
 
-export const signUp = mutation({
-  args: {
-    email: v.string(),
-    password: v.string(),
-  },
-  handler: async (ctx, args) => {
-    // Convex Auth handles the actual auth
-    // This creates the user profile record
-    const existingUser = await ctx.db
-      .query("users")
-      .withIndex("by_email", (q) => q.eq("email", args.email))
-      .first();
-
-    if (existingUser) {
-      throw new ConvexError("User already exists");
-    }
-
-    const now = Date.now();
-    const userId = await ctx.db.insert("users", {
-      email: args.email,
-      onboardingCompleted: false,
-      createdAt: now,
-      updatedAt: now,
-    });
-
-    return userId;
-  },
+export const { auth, signIn, signOut, store } = convexAuth({
+  providers: [Password],
 });
 
 export const getCurrentUser = query({

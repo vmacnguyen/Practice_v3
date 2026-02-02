@@ -8,13 +8,27 @@
  * @module
  */
 
+import type * as analyses from "../analyses.js";
+import type * as auth from "../auth.js";
+import type * as services_adapters_geminiAdapter from "../services/adapters/geminiAdapter.js";
+import type * as services_analysisService from "../services/analysisService.js";
+import type * as services_promptTemplate from "../services/promptTemplate.js";
+import type * as storage from "../storage.js";
+
 import type {
   ApiFromModules,
   FilterApi,
   FunctionReference,
 } from "convex/server";
 
-declare const fullApi: ApiFromModules<{}>;
+declare const fullApi: ApiFromModules<{
+  analyses: typeof analyses;
+  auth: typeof auth;
+  "services/adapters/geminiAdapter": typeof services_adapters_geminiAdapter;
+  "services/analysisService": typeof services_analysisService;
+  "services/promptTemplate": typeof services_promptTemplate;
+  storage: typeof storage;
+}>;
 
 /**
  * A utility for referencing Convex functions in your app's public API.

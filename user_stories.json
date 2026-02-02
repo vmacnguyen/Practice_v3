@@ -262,8 +262,8 @@
         "App renders without provider errors"
       ],
       "priority": 14,
-      "passes": false,
-      "notes": "Import config from @gluestack-ui/config"
+      "passes": true,
+      "notes": "Root layout implemented with ConvexAuthProvider (using secure storage) and GluestackUIProvider."
     },
     {
       "id": "US-015",
@@ -280,8 +280,8 @@
         "Icons use lucide-react-native"
       ],
       "priority": 15,
-      "passes": false,
-      "notes": "Practice tab should be visually prominent as main CTA"
+      "passes": true,
+      "notes": "Tab layout implemented with Home, Practice (prominent), and History tabs."
     },
     {
       "id": "US-016",
@@ -299,8 +299,8 @@
         "Uses Gluestack UI components"
       ],
       "priority": 16,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Login screen implemented with validation and Convex Auth integration."
     },
     {
       "id": "US-017",
@@ -320,8 +320,8 @@
         "On success, navigates to /onboarding"
       ],
       "priority": 17,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Signup screen implemented with validation and Convex Auth integration."
     },
     {
       "id": "US-018",

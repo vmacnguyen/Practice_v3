@@ -3,6 +3,7 @@
     "name": "practice",
     "slug": "practice",
     "version": "1.0.0",
+    "scheme": "practice",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
