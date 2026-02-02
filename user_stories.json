@@ -228,8 +228,8 @@
         "GEMINI_API_KEY read from process.env"
       ],
       "priority": 12,
-      "passes": false,
-      "notes": "Use @google/generative-ai package"
+      "passes": true,
+      "notes": "Gemini adapter implemented and validated with unit tests using robust mocking for GoogleGenerativeAI SDK."
     },
     {
       "id": "US-013",
