@@ -246,8 +246,8 @@
         "practiceTips field transformed from practice_tips in response"
       ],
       "priority": 13,
-      "passes": false,
-      "notes": "Use internalAction for Convex action that makes external API calls"
+      "passes": true,
+      "notes": "AI analysis service implemented with retry logic and full orchestration."
     },
     {
       "id": "US-014",
