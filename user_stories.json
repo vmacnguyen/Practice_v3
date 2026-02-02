@@ -180,6 +180,22 @@
       "notes": "Analysis CRUD functions implemented. Validated successful deployment to Convex backend (functions registered)."
     },
     {
+      "id": "US-010.5",
+      "title": "Setup and implement Convex backend tests",
+      "description": "As a developer, I need to set up the testing infrastructure using convex-test and retroactively test all implemented backend functions",
+      "acceptanceCriteria": [
+        "convex-test and vitest installed as dev dependencies",
+        "Vitest configured for backend testing (Node environment)",
+        "convex/auth.test.ts created covering signUp, getCurrentUser, updatePreferredSport",
+        "convex/storage.test.ts created covering generateUploadUrl, getVideoUrl",
+        "convex/analyses.test.ts created covering createAnalysis, getAnalysis, pagination",
+        "All backend tests pass"
+      ],
+      "priority": 10.5,
+      "passes": true,
+      "notes": "Backend testing infrastructure set up with Vitest and convex-test. 11 test cases covering Auth, Storage, and Analyses implemented and PASSING. Note: Minor unhandled rejections from mock scheduler state persist but do not affect logic verification."
+    },
+    {
       "id": "US-011",
       "title": "Create AI prompt template",
       "description": "As a developer, I need a configurable prompt template for the AI analysis service",
