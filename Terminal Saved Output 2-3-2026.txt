@@ -1,0 +1,1866 @@
+Last login: Tue Feb  3 09:33:12 on ttys000
+vivienmacnguyen@Mac ~ % cd Documents
+vivienmacnguyen@Mac Documents % cd Practice-v3
+vivienmacnguyen@Mac Practice-v3 % cd practice
+vivienmacnguyen@Mac practice % npx expo run:ios
+env: load .env.local
+env: export CONVEX_DEPLOYMENT EXPO_PUBLIC_CONVEX_URL EXPO_PUBLIC_CONVEX_SITE_URL
+✔ Installed CocoaPods
+› Planning build
+    Run script build phase '[CP-User] [Hermes] Replace Hermes for the right configuration, if needed' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'hermes-engine' from project 'Pods')
+› Executing react-native Pods/hermes-engine » [CP-User] [Hermes] Replace Hermes for the right configuration, if needed
+› Executing react-native Pods/ReactNativeDependencies » [CP-User] [RNDeps] Replace React Native Dependencies for the right configuration, if needed
+› Preparing Pods/ExpoFileSystem-ExpoFileSystem_privacy » ResourceBundle-ExpoFileSystem_privacy-ExpoFileSystem-Info.plist
+› Preparing expo-constants Pods/EXConstants-EXConstants » ResourceBundle-EXConstants-EXConstants-Info.plist
+› Preparing Pods/EXConstants-ExpoConstants_privacy » ResourceBundle-ExpoConstants_privacy-EXConstants-Info.plist
+› Executing react-native Pods/hermes-engine » [CP] Copy XCFrameworks
+› Executing react-native Pods/ReactNativeDependencies » [CP] Copy XCFrameworks
+› Executing react-native Pods/React-Core-prebuilt » [CP-User] [RNDeps] Replace React Native Core for the right configuration, if needed
+› Executing react-native Pods/React-Core-prebuilt » [CP] Copy XCFrameworks
+› Preparing Pods/React-Core-React-Core_privacy » ResourceBundle-React-Core_privacy-React-Core-Info.plist
+› Preparing Pods/React-cxxreact-React-cxxreact_privacy » ResourceBundle-React-cxxreact_privacy-React-cxxreact-Info.plist
+› Executing react-native Pods/React-RCTFBReactNativeSpec » [CP-User] [RN]Check FBReactNativeSpec
+› Preparing Pods/RNSVG-RNSVGFilters » ResourceBundle-RNSVGFilters-RNSVG-Info.plist
+› Executing practice Pods/ReactCodegen » [CP-User] Generate Specs
+› Compiling practice Pods/ReactCodegen » rnsvgJSI-generated.cpp
+› Compiling practice Pods/ReactCodegen » rnworkletsJSI-generated.cpp
+› Compiling practice Pods/ReactCodegen » safeareacontextJSI-generated.cpp
+› Compiling practice Pods/ReactCodegen » rnscreensJSI-generated.cpp
+› Compiling practice Pods/ReactCodegen » rnreanimatedJSI-generated.cpp
+› Compiling practice Pods/ReactCodegen » rngesturehandler_codegenJSI-generated.cpp
+› Compiling practice Pods/ReactCodegen » safeareacontext-generated.mm
+› Compiling practice Pods/ReactCodegen » rnworklets-generated.mm
+› Compiling practice Pods/ReactCodegen » rnsvg-generated.mm
+› Compiling practice Pods/ReactCodegen » rnscreens-generated.mm
+› Compiling practice Pods/ReactCodegen » rnreanimated-generated.mm
+› Compiling practice Pods/ReactCodegen » rngesturehandler_codegen-generated.mm
+› Compiling practice Pods/ReactCodegen » States.cpp
+› Compiling practice Pods/ReactCodegen » States.cpp
+› Compiling practice Pods/ReactCodegen » States.cpp
+› Compiling practice Pods/ReactCodegen » ShadowNodes.cpp
+› Compiling practice Pods/ReactCodegen » States.cpp
+› Compiling practice Pods/ReactCodegen » ShadowNodes.cpp
+› Compiling practice Pods/ReactCodegen » ShadowNodes.cpp
+› Compiling practice Pods/ReactCodegen » ShadowNodes.cpp
+› Compiling practice Pods/ReactCodegen » RCTUnstableModulesRequiringMainQueueSetupProvider.mm
+› Compiling practice Pods/ReactCodegen » RCTThirdPartyComponentsProvider.mm
+› Compiling practice Pods/ReactCodegen » RCTModulesConformingToProtocolsProvider.mm
+› Compiling practice Pods/ReactCodegen » RCTModuleProviders.mm
+› Compiling practice Pods/ReactCodegen » Props.cpp
+› Compiling practice Pods/ReactCodegen » Props.cpp
+› Compiling practice Pods/ReactCodegen » Props.cpp
+› Compiling practice Pods/ReactCodegen » Props.cpp
+› Compiling practice Pods/ReactCodegen » EventEmitters.cpp
+› Compiling practice Pods/ReactCodegen » EventEmitters.cpp
+› Compiling practice Pods/ReactCodegen » EventEmitters.cpp
+› Compiling practice Pods/ReactCodegen » EventEmitters.cpp
+› Compiling practice Pods/ReactCodegen » ComponentDescriptors.cpp
+› Compiling practice Pods/ReactCodegen » ComponentDescriptors.cpp
+› Compiling practice Pods/ReactCodegen » ComponentDescriptors.cpp
+› Compiling practice Pods/ReactCodegen » ComponentDescriptors.cpp
+› Compiling practice Pods/ReactAppDependencyProvider » RCTAppDependencyProvider.mm
+› Compiling react-native-safe-area-context Pods/react-native-safe-area-context » RNCSafeAreaContext.mm
+› Compiling react-native-worklets Pods/RNWorklets » WorkletsModule.mm
+› Compiling react-native-screens Pods/RNScreens » RNSBottomTabsHostComponentView.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGCircle.mm
+› Compiling react-native-reanimated Pods/RNReanimated » NativeProxy.mm
+› Compiling react-native-gesture-handler Pods/RNGestureHandler » RNGestureHandlerButtonComponentView.mm
+› Compiling react-native-safe-area-context Pods/react-native-safe-area-context » RNCSafeAreaViewShadowNode.cpp
+› Compiling react-native-safe-area-context Pods/react-native-safe-area-context » RNCSafeAreaViewState.cpp
+› Compiling react-native-safe-area-context Pods/react-native-safe-area-context » RNCSafeAreaViewComponentView.mm
+› Compiling react-native-safe-area-context Pods/react-native-safe-area-context » RNCSafeAreaProviderComponentView.mm
+› Packaging practice Pods/ReactCodegen » libReactCodegen.a
+› Packaging practice Pods/ReactAppDependencyProvider » libReactAppDependencyProvider.a
+› Compiling react-native-screens Pods/RNScreens » RNSBottomTabsHostComponentView+RNSImageLoader.mm
+› Packaging react-native-worklets Pods/RNWorklets » libRNWorklets.a
+› Compiling react-native-screens Pods/RNScreens » UIViewController+RNScreens.mm
+› Compiling react-native-screens Pods/RNScreens » RNSTabsScreenViewController.mm
+› Compiling react-native-screens Pods/RNScreens » RNSTabBarControllerDelegate.mm
+› Compiling react-native-screens Pods/RNScreens » RNSTabBarController.mm
+› Compiling react-native-screens Pods/RNScreens » RNSTabBarAppearanceCoordinator.mm
+› Compiling react-native-screens Pods/RNScreens » RNSSplitViewScreenShadowNode.cpp
+› Compiling react-native-screens Pods/RNScreens » RNSSearchBar.mm
+› Compiling react-native-screens Pods/RNScreens » RNSScreenStackHeaderSubviewShadowNode.cpp
+› Packaging react-native-safe-area-context Pods/react-native-safe-area-context » libreact-native-safe-area-context.a
+› Compiling react-native-screens Pods/RNScreens » RNSScreenStackHeaderSubview.mm
+› Compiling react-native-screens Pods/RNScreens » RNSScreenStackHeaderConfigShadowNode.cpp
+› Compiling react-native-screens Pods/RNScreens » RNSScreenStackHeaderConfig.mm
+› Compiling react-native-screens Pods/RNScreens » RNSScreenStack.mm
+› Compiling react-native-screens Pods/RNScreens » RNSScreenShadowNode.cpp
+› Compiling react-native-screens Pods/RNScreens » RNSScreenNavigationContainer.mm
+› Compiling react-native-screens Pods/RNScreens » RNSScreenFooter.mm
+› Compiling react-native-screens Pods/RNScreens » RNSScreenContentWrapper.mm
+› Compiling react-native-screens Pods/RNScreens » RNSScreenContainer.mm
+› Compiling react-native-screens Pods/RNScreens » RNSScreen.mm
+› Compiling react-native-screens Pods/RNScreens » RNSModule.mm
+› Compiling react-native-screens Pods/RNScreens » RNSModalScreenShadowNode.cpp
+› Compiling react-native-screens Pods/RNScreens » RNSModalScreen.mm
+› Compiling react-native-screens Pods/RNScreens » RNSFullWindowOverlayShadowNode.cpp
+› Compiling react-native-screens Pods/RNScreens » RNSFullWindowOverlay.mm
+› Compiling react-native-screens Pods/RNScreens » RNSConvert.mm
+› Compiling react-native-screens Pods/RNScreens » RNSConversions.mm
+› Compiling react-native-screens Pods/RNScreens » RNSConversions-SplitView.mm
+› Compiling react-native-screens Pods/RNScreens » RNSConversions-Fabric.mm
+› Compiling react-native-screens Pods/RNScreens » RNSConversions-BottomTabs.mm
+› Compiling react-native-screens Pods/RNScreens » RNSBottomTabsShadowNode.cpp
+› Compiling react-native-screens Pods/RNScreens » RNSBottomTabsScreenEventEmitter.mm
+› Compiling react-native-screens Pods/RNScreens » RNSBottomTabsScreenComponentView.mm
+› Compiling react-native-screens Pods/RNScreens » RNSBottomTabsHostEventEmitter.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGUse.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGTextPath.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGText.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGTSpan.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGSymbol.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGSvgViewModule.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGSvgView.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGShadowNodes.cpp
+› Compiling react-native-svg Pods/RNSVG » RNSVGRenderableModule.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGRect.mm
+› Packaging react-native-screens Pods/RNScreens » libRNScreens.a
+› Compiling react-native-svg Pods/RNSVG » RNSVGRadialGradient.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGPattern.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGPath.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGNode.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGMask.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGMarker.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGLinearGradient.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGLine.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGImageShadowNode.cpp
+› Compiling react-native-svg Pods/RNSVG » RNSVGImage.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGGroup.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGForeignObject.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGFilterPrimitive.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGFilter.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGFeOffset.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGFeMerge.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGFeGaussianBlur.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGFeFlood.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGFeComposite.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGFeColorMatrix.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGFeBlend.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGEllipse.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGDefs.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGConvert.mm
+› Compiling react-native-svg Pods/RNSVG » RNSVGClipPath.mm
+› Compiling react-native-reanimated Pods/RNReanimated » SharedTransitions.cpp
+› Compiling react-native-reanimated Pods/RNReanimated » ReanimatedModule.mm
+› Compiling react-native-gesture-handler Pods/RNGestureHandler » RNGestureHandlerModule.mm
+› Executing expo-modules-core Pods/ExpoModulesCore » Copy generated compatibility header
+› Executing expo-constants Pods/EXConstants » [CP-User] Generate app.config for prebuilt Constants.manifest
+› Compiling expo-image-loader Pods/EXImageLoader » EXImageLoader.m
+› Packaging react-native-svg Pods/RNSVG » libRNSVG.a
+› Compiling expo-image-loader Pods/EXImageLoader » EXImageLoader-dummy.m
+› Packaging expo-image-loader Pods/EXImageLoader » libEXImageLoader.a
+› Packaging react-native-reanimated Pods/RNReanimated » libRNReanimated.a
+› Packaging react-native-gesture-handler Pods/RNGestureHandler » libRNGestureHandler.a
+› Compiling expo-secure-store Pods/ExpoSecureStore » ExpoSecureStore-dummy.m
+› Compiling expo-linking Pods/ExpoLinking » ExpoLinking-dummy.m
+› Compiling expo-keep-awake Pods/ExpoKeepAwake » ExpoKeepAwake-dummy.m
+› Compiling expo-image-picker Pods/ExpoImagePicker » ExpoImagePicker-dummy.m
+› Compiling expo-router Pods/ExpoHead » ExpoHead-dummy.m
+› Compiling expo-font Pods/ExpoFont » ExpoFont-dummy.m
+› Compiling expo-file-system Pods/ExpoFileSystem » NSData+EXFileSystem.m
+› Compiling expo-file-system Pods/ExpoFileSystem » ExpoFileSystem-dummy.m
+› Compiling expo-file-system Pods/ExpoFileSystem » EXTaskHandlersManager.m
+› Compiling expo-file-system Pods/ExpoFileSystem » EXSessionUploadTaskDelegate.m
+› Compiling expo-file-system Pods/ExpoFileSystem » EXSessionTaskDispatcher.m
+› Compiling expo-file-system Pods/ExpoFileSystem » EXSessionTaskDelegate.m
+› Compiling expo-file-system Pods/ExpoFileSystem » EXSessionResumableDownloadTaskDelegate.m
+› Compiling expo-file-system Pods/ExpoFileSystem » EXSessionHandler.m
+› Compiling expo-file-system Pods/ExpoFileSystem » EXSessionDownloadTaskDelegate.m
+› Compiling expo-file-system Pods/ExpoFileSystem » EXSessionCancelableUploadTaskDelegate.m
+› Compiling expo-file-system Pods/ExpoFileSystem » EXFileSystemLocalFileHandler.m
+› Compiling expo-file-system Pods/ExpoFileSystem » EXFileSystemAssetLibraryHandler.m
+› Compiling expo-asset Pods/ExpoAsset » ExpoAsset-dummy.m
+› Compiling expo Pods/Expo » Expo-dummy.m
+› Compiling expo Pods/Expo » EXLegacyAppDelegateWrapper.m
+› Compiling expo Pods/Expo » EXAppDelegatesLoader.m
+› Compiling expo Pods/Expo » EXAppDefinesLoader.m
+› Compiling expo-av Pods/EXAV » EXVideoView.m
+› Compiling expo-av Pods/EXAV » EXVideoPlayerViewController.m
+› Compiling expo-av Pods/EXAV » EXAudioSessionManager.m
+› Compiling expo-av Pods/EXAV » EXAudioRecordingPermissionRequester.m
+› Compiling expo-av Pods/EXAV » EXAVPlayerData.m
+› Compiling expo-av Pods/EXAV » EXAV-dummy.m
+› Packaging expo-secure-store Pods/ExpoSecureStore » libExpoSecureStore.a
+› Packaging expo-linking Pods/ExpoLinking » libExpoLinking.a
+› Packaging expo-keep-awake Pods/ExpoKeepAwake » libExpoKeepAwake.a
+› Packaging expo-image-picker Pods/ExpoImagePicker » libExpoImagePicker.a
+› Packaging expo-router Pods/ExpoHead » libExpoHead.a
+› Packaging expo-font Pods/ExpoFont » libExpoFont.a
+› Packaging expo-asset Pods/ExpoAsset » libExpoAsset.a
+› Packaging expo-file-system Pods/ExpoFileSystem » libExpoFileSystem.a
+› Executing expo-keep-awake Pods/ExpoKeepAwake » Copy generated compatibility header
+› Executing expo-linking Pods/ExpoLinking » Copy generated compatibility header
+› Executing expo-secure-store Pods/ExpoSecureStore » Copy generated compatibility header
+› Executing expo-image-picker Pods/ExpoImagePicker » Copy generated compatibility header
+› Executing expo-router Pods/ExpoHead » Copy generated compatibility header
+› Executing expo-font Pods/ExpoFont » Copy generated compatibility header
+› Compiling expo-constants Pods/EXConstants » EXConstantsService.m
+› Compiling expo-constants Pods/EXConstants » EXConstantsInstallationIdProvider.m
+› Compiling expo-constants Pods/EXConstants » EXConstants-dummy.m
+› Executing expo-file-system Pods/ExpoFileSystem » Copy generated compatibility header
+› Executing expo-asset Pods/ExpoAsset » Copy generated compatibility header
+› Packaging expo Pods/Expo » libExpo.a
+› Packaging expo-constants Pods/EXConstants » libEXConstants.a
+› Executing expo Pods/Expo » Copy generated compatibility header
+› Executing expo-constants Pods/EXConstants » Copy generated compatibility header
+› Compiling expo-camera Pods/ExpoCamera » ExpoCamera-dummy.m
+› Packaging expo-camera Pods/ExpoCamera » libExpoCamera.a
+› Compiling expo-av Pods/EXAV » EXAV.m
+› Executing expo-camera Pods/ExpoCamera » Copy generated compatibility header
+› Packaging expo-av Pods/EXAV » libEXAV.a
+› Executing expo-av Pods/EXAV » Copy generated compatibility header
+› Compiling expo-linear-gradient Pods/ExpoLinearGradient » ExpoLinearGradient-dummy.m
+› Packaging expo-linear-gradient Pods/ExpoLinearGradient » libExpoLinearGradient.a
+› Executing expo-linear-gradient Pods/ExpoLinearGradient » Copy generated compatibility header
+› Compiling Pods/Pods-practice » Pods-practice-dummy.m
+› Packaging Pods/Pods-practice » libPods-practice.a
+› Executing practice » [CP] Check Pods Manifest.lock
+› Executing practice » [Expo] Configure project
+› Linking   practice » __preview.dylib
+› Copying   ./PrivacyInfo.xcprivacy ➜ ios/practice/PrivacyInfo.xcprivacy
+› Preparing practice » Info.plist
+› Compiling practice » practice_vers.c
+› Linking   practice » practice.debug.dylib
+› Linking   practice » practice
+› Executing practice » Bundle React Native code and images
+› Executing practice » [CP] Copy Pods Resources
+› Executing practice » [CP] Embed Pods Frameworks
+› Generating debug practice » practice.app.dSYM
+› Generating debug practice » practice.app.dSYM
+› Signing   practice » practice.debug.dylib
+› Signing   practice » __preview.dylib
+› Signing   practice » practice.app
+› Build Succeeded
+
+› 0 error(s), and 1 warning(s)
+
+Starting Metro Bundler
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█ ▄▄▄▄▄ █▄▄▄ ▀ ▀█▄ ▄ ▀▀ █  ▄█▀█ ▄▄▄▄▄ █
+█ █   █ ██▄▀ █ ▀ ▄▀ ██ ▀██ █ ▀█ █   █ █
+█ █▄▄▄█ ██▀▄ ▄▄███ ▀▄ ▀▄▀▀█ ███ █▄▄▄█ █
+█▄▄▄▄▄▄▄█ ▀▄█ ▀ █▄█▄▀▄█ ▀▄▀▄▀ █▄▄▄▄▄▄▄█
+█▄▄█▄▄█▄██▄▀█▄██▄▄ ▄ ▀██ ▄█▄▀▄█▄▀▀▀██▄█
+█▀▀  ▀ ▄ ▀▀▄█▄█    ▄▀ ▄▄ █▄█▄▀▄ ██▀ █▄█
+█▄▀ █▀█▄▄ █ █▀▄  ██▄ ▄█▀ ▄▀▀ ▀█▄█▀ ▀▄▄█
+██▄█▀▀▀▄█ ▄ █▀▀ ▄█▄  ▀█ █▀▄▄▄ ▀▄▄▀▀▀▄▄█
+██ ▀ ▄▀▄▄█   ▄██ ▀█ ▀█▀ █▄ █▀▄█▄ █ ▄▀██
+█▀ ██▄ ▄█▄▀ ▀▄ ▄ ▀█▀ █▄█▄▄ ▀▄▀█ ▄█ ▄  █
+█  ▀▄█▄▄▄▄ ▄▄▀ █ ▀▄▄ ▀▀▄ ▄▀  ▄▄▄▄ █▀▄██
+█▄ █▄ ▀▄ ▄▀▄ ▀ █   ▄██▄▄▄▀▄▀ ▄▄▀▄▄▀ █▄█
+█  ▀█▀ ▄▀ ▄ ▄▄ ▀ ██▄ ▄▀█ ▄▀█▀▄█▄▀▀▀████
+█ ▄▀▀▀ ▄▀▀██ ▄▄█▄▀▄▀  ▄ ██▄▀ █▀▄▀    ▄█
+█▄██▄▄▄▄█▀██▀▀▀   █▄▀██▄█  ██ ▄▄▄ █  ▄█
+█ ▄▄▄▄▄ ██▀▄▄▀█▀  ▄  █▄█▄▄ ██ █▄█  █▀ █
+█ █   █ █   █▄▄ ▀    ▀██▀██ ▄▄  ▄▄▄█▀▀█
+█ █▄▄▄█ █▀▄ █▄█ ▄ ▀▀█▄▄ ▄▄█▀ ▄▄▀▄ ▀▀▀ █
+█▄▄▄▄▄▄▄█▄▄▄██▄▄▄██▄▄████▄██▄▄█▄██▄██▄█
+
+› Metro waiting on
+com.coolstring1.practice://expo-development-client/?url=http%3A%2F%2F192.168.1.137%3A8081
+› Scan the QR code above to open the project in a development build. Learn more:
+https://expo.fyi/start
+
+› Web is waiting on http://localhost:8081
+
+› Using development build
+› Press s │ switch to Expo Go
+
+› Press a │ open Android
+› Press i │ open iOS simulator
+› Press w │ open web
+
+› Press j │ open debugger
+› Press r │ reload app
+› Press m │ toggle menu
+› shift+m │ more tools
+› Press o │ open project code in your editor
+
+› Press ? │ show all commands
+
+› Installing /Users/vivienmacnguyen/Library/Developer/Xcode/DerivedData/practice-cwtxiktuaxwicmfgecbaatqwrmin/Build/Products/Debug-iphonesimulator/practice.app
+› Installing on Build-1
+› Opening on Build-1 (com.coolstring1.practice)
+› Opening com.coolstring1.practice://expo-development-client/?url=http%3A%2F%2F192.168.1.137%3A8081 on Build-1
+
+› Logs for your project will appear below. Press Ctrl+C to exit.
+iOS ./index.ts ▓▓▓▓▓▓▓░░░░░░░░░ 44.7% (500/748)
+[libapp_launch_measurement.dylib] Failed to send CA Event for app launch
+measurements for ca_event_type: 0 event_name:
+com.apple.app_launch_measurement.FirstFramePresentationMetric
+[libapp_launch_measurement.dylib] Failed to send CA Event for app launch
+measurements for ca_event_type: 1 event_name:
+iOS Bundled 1523ms index.ts (3964 modules)
+[CoreFoundation] AddInstanceForFactory: No factory registered for id <CFUUID
+0x6000002ce4c0> F8BB1C28-BAE8-11D6-9C31-00039315CD46
+ WARN  SafeAreaView has been deprecated and will be removed in a future release. Please use 'react-native-safe-area-context' instead. See https://github.com/th3rdwave/react-native-safe-area-context
+ WARN  [expo-av]: Expo AV has been deprecated and will be removed in SDK 54. Use the `expo-audio` and `expo-video` packages to replace the required functionality.
+ LOG  WebSocket reconnected at t=2667730.3s
+ LOG  WebSocket reconnected at t=2667730.7s
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000d53060 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000d53060 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000da2910 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000da2910 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c10570 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c10570 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dabd50 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dabd50 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000db0ea0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000db0ea0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000da0540 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000da0540 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000da28e0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000da28e0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c10570 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c10570 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c10510 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c10510 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[TextInputUI] Could not find cached accumulator for token=8D767755 type:0 in
+-[TUIKeyboardCandidateMultiplexer
+receiveExternalAutocorrectionUpdate:requestToken:]_block_invoke
+[TextInputUI] Could not find cached accumulator for token=8D767755 type:1 in
+-[TUIKeyboardCandidateMultiplexer
+_queueOnly_willHandleDeliveryForCandidates:requestToken:]
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1c210 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1c210 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1c0c0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1c0c0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1d9e0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1d9e0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1db90 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1db90 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1c210 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1c210 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1c0c0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1c0c0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dddfe0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dddfe0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000ddd530 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000ddd530 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dde160 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dde160 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[TextInputUI] Result accumulator timeout: 0.250000, exceeded.
+[RemoteTextInput] -[RTIInputSystemClient
+remoteTextInputSessionWithID:performInputOperation:]  perform input operation
+requires a valid sessionID. inputModality = Keyboard, inputOperation = <null
+selector>, customInfoType = UIEmojiSearchOperations
+[TextInputUI] Could not find cached accumulator for token=C0EE35D4 type:0 in
+-[TUIKeyboardCandidateMultiplexer
+receiveExternalAutocorrectionUpdate:requestToken:]_block_invoke
+[TextInputUI] Could not find cached accumulator for token=C0EE35D4 type:1 in
+-[TUIKeyboardCandidateMultiplexer
+_queueOnly_willHandleDeliveryForCandidates:requestToken:]
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000d26bb0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000d26bb0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dbff90 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dbff90 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dbd140 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dbd140 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dbcfc0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dbcfc0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dbdd10 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dbdd10 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dbff90 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dbff90 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dbd140 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dbd140 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000d9e640 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000d9e640 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000d9ce10 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000d9ce10 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[TextInputUI] Could not find cached accumulator for token=689357C6 type:0 in
+-[TUIKeyboardCandidateMultiplexer
+receiveExternalAutocorrectionUpdate:requestToken:]_block_invoke
+[TextInputUI] Could not find cached accumulator for token=689357C6 type:1 in
+-[TUIKeyboardCandidateMultiplexer
+_queueOnly_willHandleDeliveryForCandidates:requestToken:]
+[TextInputUI] Could not find cached accumulator for token=3300A57E type:0 in
+-[TUIKeyboardCandidateMultiplexer
+receiveExternalAutocorrectionUpdate:requestToken:]_block_invoke
+[TextInputUI] Could not find cached accumulator for token=3300A57E type:1 in
+-[TUIKeyboardCandidateMultiplexer
+_queueOnly_willHandleDeliveryForCandidates:requestToken:]
+[TextInputUI] Could not find cached accumulator for token=21ACD5FF type:0 in
+-[TUIKeyboardCandidateMultiplexer
+receiveExternalAutocorrectionUpdate:requestToken:]_block_invoke
+[TextInputUI] Could not find cached accumulator for token=21ACD5FF type:1 in
+-[TUIKeyboardCandidateMultiplexer
+_queueOnly_willHandleDeliveryForCandidates:requestToken:]
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df54a0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df54a0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df55c0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df55c0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df5740 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df5740 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df5560 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df5560 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df54a0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df54a0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df55c0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df55c0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df5740 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df5740 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df5560 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df5560 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df54a0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df54a0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[React] [CONVEX A(auth:signIn)] [Request ID: 99dcf0228568d1db] Server Error
+Uncaught Error: InvalidAccountId
+at retrieveAccount
+(../../node_modules/@convex-dev/auth/src/server/implementation/index.ts:602:9)
+at async authorize [as authorize]
+(../node_modules/@convex-dev/auth/src/providers/Password.ts:157:10)
+at async handleCredentials
+(../../node_modules/@convex-dev/auth/src/server/implementation/signIn.ts:191:6)
+at async handler
+(../../node_modules/@convex-dev/auth/src/server/implementation/index.ts:416:26)
+ ERROR  [CONVEX A(auth:signIn)] [Request ID: 99dcf0228568d1db] Server Error
+Uncaught Error: InvalidAccountId
+    at retrieveAccount (../../node_modules/@convex-dev/auth/src/server/implementation/index.ts:602:9)
+    at async authorize [as authorize] (../node_modules/@convex-dev/auth/src/providers/Password.ts:157:10)
+    at async handleCredentials (../../node_modules/@convex-dev/auth/src/server/implementation/signIn.ts:191:6)
+    at async handler (../../node_modules/@convex-dev/auth/src/server/implementation/index.ts:416:26)
+ 
+
+Code: construct.js
+  2 | var setPrototypeOf = require("./setPrototypeOf.js");
+  3 | function _construct(t, e, r) {
+> 4 |   if (isNativeReflectConstruct()) return Reflect.construct.apply(null, arguments);
+    |                                                                 ^
+  5 |   var o = [null];
+  6 |   o.push.apply(o, e);
+  7 |   var p = new (t.bind.apply(t, o))();
+Call Stack
+  construct (<native>)
+  apply (<native>)
+  _construct (node_modules/@babel/runtime/helpers/construct.js:4:65)
+  Wrapper (node_modules/@babel/runtime/helpers/wrapNativeSuper.js:15:23)
+  construct (<native>)
+  _callSuper (node_modules/@babel/runtime/helpers/callSuper.js:5:108)
+  NamelessError (node_modules/@expo/metro-runtime/src/metroServerLogs.native.ts:102:20)
+  captureCurrentStack (node_modules/@expo/metro-runtime/src/metroServerLogs.native.ts:106:27)
+  HMRClient.log (node_modules/@expo/metro-runtime/src/metroServerLogs.native.ts:39:79)
+  console.level (node_modules/react-native/Libraries/Core/setUpDeveloperTools.js:41:24)
+  apply (<native>)
+  logger.addLogLineListener$argument_0 (node_modules/convex/dist/cjs/browser/logging.js:102:22)
+  apply (<native>)
+  DefaultLogger#error (node_modules/convex/dist/cjs/browser/logging.js:84:11)
+  logForFunction (node_modules/convex/dist/cjs/browser/logging.js:132:17)
+  RequestManager#onResponse (node_modules/convex/dist/cjs/browser/sync/request_manager.js:87:40)
+  import_web_socket_manager.WebSocketManager$argument_1.onMessage (node_modules/convex/dist/cjs/browser/sync/client.js:259:45)
+  ws.onmessage (node_modules/convex/dist/cjs/browser/sync/web_socket_manager.js:286:38)
+  invoke (node_modules/react-native/src/private/webapis/dom/events/EventTarget.js:382:29)
+  dispatch (node_modules/react-native/src/private/webapis/dom/events/EventTarget.js:293:11)
+  dispatchEvent (node_modules/react-native/src/private/webapis/dom/events/EventTarget.js:207:13)
+  _eventEmitter.addListener$argument_1 (node_modules/react-native/Libraries/WebSocket/WebSocket.js:248:27)
+  apply (<native>)
+  emit (node_modules/react-native/Libraries/vendor/emitter/EventEmitter.js:130:36)
+  apply (<native>)
+  <anonymous> (node_modules/@babel/runtime/helpers/superPropGet.js:6:19)
+  RCTDeviceEventEmitterImpl#emit (node_modules/react-native/Libraries/EventEmitter/RCTDeviceEventEmitter.js:33:5)
+[React] [CONVEX A(auth:signIn)] [Request ID: ad394a97b2b029b3] Server Error
+Uncaught Error: InvalidAccountId
+at retrieveAccount
+(../../node_modules/@convex-dev/auth/src/server/implementation/index.ts:602:9)
+at async authorize [as authorize]
+(../node_modules/@convex-dev/auth/src/providers/Password.ts:157:10)
+at async handleCredentials
+(../../node_modules/@convex-dev/auth/src/server/implementation/signIn.ts:191:6)
+at async handler
+(../../node_modules/@convex-dev/auth/src/server/implementation/index.ts:416:26)
+ ERROR  [CONVEX A(auth:signIn)] [Request ID: ad394a97b2b029b3] Server Error
+Uncaught Error: InvalidAccountId
+    at retrieveAccount (../../node_modules/@convex-dev/auth/src/server/implementation/index.ts:602:9)
+    at async authorize [as authorize] (../node_modules/@convex-dev/auth/src/providers/Password.ts:157:10)
+    at async handleCredentials (../../node_modules/@convex-dev/auth/src/server/implementation/signIn.ts:191:6)
+    at async handler (../../node_modules/@convex-dev/auth/src/server/implementation/index.ts:416:26)
+ 
+
+Code: construct.js
+  2 | var setPrototypeOf = require("./setPrototypeOf.js");
+  3 | function _construct(t, e, r) {
+> 4 |   if (isNativeReflectConstruct()) return Reflect.construct.apply(null, arguments);
+    |                                                                 ^
+  5 |   var o = [null];
+  6 |   o.push.apply(o, e);
+  7 |   var p = new (t.bind.apply(t, o))();
+Call Stack
+  construct (<native>)
+  apply (<native>)
+  _construct (node_modules/@babel/runtime/helpers/construct.js:4:65)
+  Wrapper (node_modules/@babel/runtime/helpers/wrapNativeSuper.js:15:23)
+  construct (<native>)
+  _callSuper (node_modules/@babel/runtime/helpers/callSuper.js:5:108)
+  NamelessError (node_modules/@expo/metro-runtime/src/metroServerLogs.native.ts:102:20)
+  captureCurrentStack (node_modules/@expo/metro-runtime/src/metroServerLogs.native.ts:106:27)
+  HMRClient.log (node_modules/@expo/metro-runtime/src/metroServerLogs.native.ts:39:79)
+  console.level (node_modules/react-native/Libraries/Core/setUpDeveloperTools.js:41:24)
+  apply (<native>)
+  logger.addLogLineListener$argument_0 (node_modules/convex/dist/cjs/browser/logging.js:102:22)
+  apply (<native>)
+  DefaultLogger#error (node_modules/convex/dist/cjs/browser/logging.js:84:11)
+  logForFunction (node_modules/convex/dist/cjs/browser/logging.js:132:17)
+  RequestManager#onResponse (node_modules/convex/dist/cjs/browser/sync/request_manager.js:87:40)
+  import_web_socket_manager.WebSocketManager$argument_1.onMessage (node_modules/convex/dist/cjs/browser/sync/client.js:259:45)
+  ws.onmessage (node_modules/convex/dist/cjs/browser/sync/web_socket_manager.js:286:38)
+  invoke (node_modules/react-native/src/private/webapis/dom/events/EventTarget.js:382:29)
+  dispatch (node_modules/react-native/src/private/webapis/dom/events/EventTarget.js:293:11)
+  dispatchEvent (node_modules/react-native/src/private/webapis/dom/events/EventTarget.js:207:13)
+  _eventEmitter.addListener$argument_1 (node_modules/react-native/Libraries/WebSocket/WebSocket.js:248:27)
+  apply (<native>)
+  emit (node_modules/react-native/Libraries/vendor/emitter/EventEmitter.js:130:36)
+  apply (<native>)
+  <anonymous> (node_modules/@babel/runtime/helpers/superPropGet.js:6:19)
+  RCTDeviceEventEmitterImpl#emit (node_modules/react-native/Libraries/EventEmitter/RCTDeviceEventEmitter.js:33:5)
+[RemoteTextInput] -[RTIInputSystemClient
+remoteTextInputSessionWithID:performInputOperation:]  perform input operation
+requires a valid sessionID. inputModality = Keyboard, inputOperation = <null
+selector>, customInfoType = UIEmojiSearchOperations
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c23ae0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c23ae0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df6040 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df6040 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000ddcae0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000ddcae0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000d223a0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000d223a0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c22640 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c22640 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df6220 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000df6220 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1d6b0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1d6b0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dcae20 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dcae20 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dfd0b0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dfd0b0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000d20060 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000d20060 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000d227f0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000d227f0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000de14a0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000de14a0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000de2d90 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000de2d90 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000de1530 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000de1530 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000de0000 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000de0000 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000de14a0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000de14a0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000de2d90 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000de2d90 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000de1530 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000de1530 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[SafariServices] Cannot show Automatic Strong Passwords for app bundleID:
+com.coolstring1.practice due to error: iCloud Keychain is disabled
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e14780 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e14780 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e15c50 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e15c50 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e15290 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e15290 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e146f0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e146f0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e14780 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e14780 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e15c50 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e15c50 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e15290 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e15290 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e146f0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e146f0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e14780 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e14780 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[RemoteTextInput] -[RTIInputSystemClient
+remoteTextInputSessionWithID:performInputOperation:]  perform input operation
+requires a valid sessionID. inputModality = Keyboard, inputOperation = <null
+selector>, customInfoType = UIEmojiSearchOperations
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000d347e0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000d347e0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000de8390 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000de8390 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dfa670 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dfa670 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dfa610 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dfa610 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dfb480 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dfb480 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000da1dd0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000da1dd0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000de9cb0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000de9cb0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dd97a0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dd97a0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dd9ec0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000dd9ec0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000cc7630 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000cc7630 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1dc50 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1dc50 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1ee20 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1ee20 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1e6a0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1e6a0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1c3f0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1c3f0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1dc50 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1dc50 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1ee20 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1ee20 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1e6a0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1e6a0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1c3f0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000c1c3f0 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[SafariServices] Cannot show Automatic Strong Passwords for app bundleID:
+com.coolstring1.practice due to error: iCloud Keychain is disabled
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e03e70 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e03e70 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e00270 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e00270 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e00960 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e00960 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e00480 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e00480 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e03e70 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e03e70 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e00270 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e00270 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e00960 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e00960 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e00480 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e00480 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[CoreHaptics]        CHHapticPattern.mm:487   +[CHHapticPattern
+patternForKey:error:]: Failed to read pattern library data: Error
+Domain=NSCocoaErrorDomain Code=260 "The file “hapticpatternlibrary.plist”
+couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e03e70 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[UIKitCore] <_UIKBFeedbackGenerator: 0x60000351eb50>: Error creating
+CHHapticPattern: Error Domain=NSCocoaErrorDomain Code=260 "The file
+“hapticpatternlibrary.plist” couldn’t be opened because there is no such file."
+UserInfo={NSFilePath=/Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSURL=file:///Library/Audio/Tunings/Generic/Haptics/Library/hapticpatternlibrary.plist,
+NSUnderlyingError=0x600000e03e70 {Error Domain=NSPOSIXErrorDomain Code=2 "No
+such file or directory"}}
+[React] [CONVEX M(auth:completeOnboarding)] [Request ID: 7a2c627c9c0ef960]
+Server Error
+Uncaught ConvexError: Not authenticated
+at handler (../convex/auth.ts:41:17)
+[React] 'Failed to complete onboarding:', { [ConvexError: [CONVEX
+M(auth:completeOnboarding)] [Request ID: 7a2c627c9c0ef960] Server Error
+Uncaught ConvexError: Not authenticated
+at handler (../convex/auth.ts:41:17)
+
+Called by client] name: 'ConvexError', data: 'Not authenticated' }
+ ERROR  [CONVEX M(auth:completeOnboarding)] [Request ID: 7a2c627c9c0ef960] Server Error
+Uncaught ConvexError: Not authenticated
+    at handler (../convex/auth.ts:41:17)
+ 
+
+Code: construct.js
+  2 | var setPrototypeOf = require("./setPrototypeOf.js");
+  3 | function _construct(t, e, r) {
+> 4 |   if (isNativeReflectConstruct()) return Reflect.construct.apply(null, arguments);
+    |                                                                 ^
+  5 |   var o = [null];
+  6 |   o.push.apply(o, e);
+  7 |   var p = new (t.bind.apply(t, o))();
+Call Stack
+  construct (<native>)
+  apply (<native>)
+  _construct (node_modules/@babel/runtime/helpers/construct.js:4:65)
+  Wrapper (node_modules/@babel/runtime/helpers/wrapNativeSuper.js:15:23)
+  construct (<native>)
+  _callSuper (node_modules/@babel/runtime/helpers/callSuper.js:5:108)
+  NamelessError (node_modules/@expo/metro-runtime/src/metroServerLogs.native.ts:102:20)
+  captureCurrentStack (node_modules/@expo/metro-runtime/src/metroServerLogs.native.ts:106:27)
+  HMRClient.log (node_modules/@expo/metro-runtime/src/metroServerLogs.native.ts:39:79)
+  console.level (node_modules/react-native/Libraries/Core/setUpDeveloperTools.js:41:24)
+  apply (<native>)
+  logger.addLogLineListener$argument_0 (node_modules/convex/dist/cjs/browser/logging.js:102:22)
+  apply (<native>)
+  DefaultLogger#error (node_modules/convex/dist/cjs/browser/logging.js:84:11)
+  logForFunction (node_modules/convex/dist/cjs/browser/logging.js:132:17)
+  RequestManager#onResponse (node_modules/convex/dist/cjs/browser/sync/request_manager.js:87:40)
+  import_web_socket_manager.WebSocketManager$argument_1.onMessage (node_modules/convex/dist/cjs/browser/sync/client.js:245:75)
+  ws.onmessage (node_modules/convex/dist/cjs/browser/sync/web_socket_manager.js:286:38)
+  invoke (node_modules/react-native/src/private/webapis/dom/events/EventTarget.js:382:29)
+  dispatch (node_modules/react-native/src/private/webapis/dom/events/EventTarget.js:293:11)
+  dispatchEvent (node_modules/react-native/src/private/webapis/dom/events/EventTarget.js:207:13)
+  _eventEmitter.addListener$argument_1 (node_modules/react-native/Libraries/WebSocket/WebSocket.js:248:27)
+  apply (<native>)
+  emit (node_modules/react-native/Libraries/vendor/emitter/EventEmitter.js:130:36)
+  apply (<native>)
+  <anonymous> (node_modules/@babel/runtime/helpers/superPropGet.js:6:19)
+  RCTDeviceEventEmitterImpl#emit (node_modules/react-native/Libraries/EventEmitter/RCTDeviceEventEmitter.js:33:5)
+ ERROR  Failed to complete onboarding: [ConvexError: [CONVEX M(auth:completeOnboarding)] [Request ID: 7a2c627c9c0ef960] Server Error
+Uncaught ConvexError: Not authenticated
+    at handler (../convex/auth.ts:41:17)
+
+  Called by client] 
+
+Call Stack
+  handler (../convex/auth.ts:41:17)
+

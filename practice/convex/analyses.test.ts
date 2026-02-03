@@ -7,8 +7,8 @@ import { internal } from "./_generated/api";
 describe("Convex Analyses", () => {
   const setup = async () => {
     const t = convexTest(schema);
-    const userId = await t.mutation(api.auth.signUp, {
-      email: "athlete@example.com",
+    const userId = await t.mutation((api.auth as any).signUp, {
+      email: "test@example.com",
       password: "password123",
     });
     const tAuth = t.withIdentity({ subject: userId });
@@ -69,8 +69,8 @@ describe("Convex Analyses", () => {
     await t.finishInProgressScheduledFunctions();
 
     // User 2 tries to read
-    const user2Id = await t.mutation(api.auth.signUp, {
-      email: "hacker@example.com",
+    const user2Id = await t.mutation((api.auth as any).signUp, {
+      email: "test2@example.com",
       password: "password123",
     });
     const tAuth2 = t.withIdentity({ subject: user2Id });
@@ -90,20 +90,19 @@ describe("Convex Analyses", () => {
 
     await t.finishInProgressScheduledFunctions();
 
-    // Fetch page of 2
-    const result = await tAuth.query(api.analyses.getAnalysisHistory, { limit: 2 });
-    
-    expect(result.items.length).toBe(2);
-    expect(result.hasMore).toBe(true);
-    expect(result.cursor).toBeDefined();
-
-    // Fetch next page
-    const result2 = await tAuth.query(api.analyses.getAnalysisHistory, { 
-      limit: 2, 
-      cursor: result.cursor as string 
+    const result = await tAuth.query(api.analyses.getAnalysisHistory, {
+      paginationOpts: { numItems: 2, cursor: null }
     });
     
-    expect(result2.items.length).toBe(1);
-    expect(result2.hasMore).toBe(false);
+    expect(result.page.length).toBe(2);
+    expect(result.isDone).toBe(false);
+    expect(result.continueCursor).toBeDefined();
+
+    const result2 = await tAuth.query(api.analyses.getAnalysisHistory, {
+      paginationOpts: { numItems: 2, cursor: result.continueCursor }
+    });
+
+    expect(result2.page.length).toBe(1);
+    expect(result2.isDone).toBe(true);
   });
 });

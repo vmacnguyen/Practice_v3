@@ -6,7 +6,9 @@ import { config } from '@gluestack-ui/config';
 import { ENV } from '../config/env';
 import { secureStorage } from '../utils/storage';
 
-const convex = new ConvexReactClient(ENV.CONVEX_URL as string);
+const convex = new ConvexReactClient(ENV.CONVEX_URL as string, {
+  verbose: true,
+});
 
 export default function RootLayout() {
   return (

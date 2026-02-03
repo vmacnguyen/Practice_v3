@@ -1,55 +1,117 @@
 import { Tabs } from 'expo-router';
-import { Home, Video, History } from 'lucide-react-native';
-import { View } from '@gluestack-ui/themed';
-import { useToken } from '@gluestack-ui/themed';
+import { View, Text, StyleSheet, Platform, TouchableOpacity } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { LinearGradient } from 'expo-linear-gradient';
+import { Home, History, Video, Plus } from 'lucide-react-native';
 
 export default function TabLayout() {
-  const primaryColor = useToken('colors', 'primary500');
-  const grayColor = useToken('colors', 'coolGray400');
+  const insets = useSafeAreaInsets();
 
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          height: 80,
-          paddingBottom: 20,
+          height: 60 + insets.bottom,
+          backgroundColor: 'white',
+          borderTopColor: '#E5E7EB',
+          borderTopWidth: 1,
           paddingTop: 10,
+          paddingBottom: insets.bottom + 5,
         },
-        tabBarActiveTintColor: primaryColor,
-        tabBarInactiveTintColor: grayColor || 'gray',
+        tabBarShowLabel: false,
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color, size }) => <Home color={color} size={size} />,
+          tabBarIcon: ({ focused }) => (
+            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+              <Home
+                size={24}
+                color={focused ? '#155DFC' : '#6A7282'}
+                strokeWidth={2}
+              />
+              <Text
+                style={{
+                  fontSize: 10,
+                  fontWeight: '500',
+                  color: focused ? '#155DFC' : '#6A7282',
+                  marginTop: 4,
+                }}
+              >
+                Home
+              </Text>
+            </View>
+          ),
         }}
       />
+
       <Tabs.Screen
         name="practice"
         options={{
           title: 'Practice',
           tabBarIcon: ({ focused }) => (
-            <View
-              bg="$primary500"
-              p="$3"
-              rounded="$full"
-              mt={-20}
-              hardShadow="2"
-            >
-              <Video color="white" size={24} />
+            <View style={{ top: -20 }}>
+              <LinearGradient
+                colors={['#155DFC', '#9810FA']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={{
+                  width: 56,
+                  height: 56,
+                  borderRadius: 28,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  shadowColor: '#155DFC',
+                  shadowOffset: { width: 0, height: 4 },
+                  shadowOpacity: 0.3,
+                  shadowRadius: 8,
+                  elevation: 5,
+                }}
+              >
+                <Video size={28} color="white" fill="white" />
+              </LinearGradient>
+              <Text
+                style={{
+                  fontSize: 10,
+                  fontWeight: '500',
+                  color: focused ? '#155DFC' : '#6A7282',
+                  marginTop: 4,
+                  textAlign: 'center',
+                }}
+              >
+                Practice
+              </Text>
             </View>
           ),
-          tabBarLabel: () => null,
         }}
       />
+
       <Tabs.Screen
         name="history"
         options={{
           title: 'History',
-          tabBarIcon: ({ color, size }) => <History color={color} size={size} />,
+          tabBarIcon: ({ focused }) => (
+            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+              <History
+                size={24}
+                color={focused ? '#155DFC' : '#6A7282'}
+                strokeWidth={2}
+              />
+              <Text
+                style={{
+                  fontSize: 10,
+                  fontWeight: '500',
+                  color: focused ? '#155DFC' : '#6A7282',
+                  marginTop: 4,
+                }}
+              >
+                History
+              </Text>
+            </View>
+          ),
         }}
       />
     </Tabs>

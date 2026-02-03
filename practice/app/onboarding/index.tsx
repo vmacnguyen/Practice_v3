@@ -1,9 +1,5 @@
-import { View, Text } from 'react-native';
+import { Redirect } from 'expo-router';
 
 export default function OnboardingIndex() {
-  return (
-    <View>
-      <Text>Onboarding Index</Text>
-    </View>
-  );
+  return <Redirect href="/onboarding/sport-selection" />;
 }

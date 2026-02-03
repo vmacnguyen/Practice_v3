@@ -8,8 +8,8 @@ describe("Convex Storage", () => {
     const t = convexTest(schema);
     
     // Create user
-    const userId = await t.mutation(api.auth.signUp, {
-      email: "storage@example.com",
+    const userId = await t.mutation((api.auth as any).signUp, {
+      email: "test@example.com",
       password: "password123",
     });
 

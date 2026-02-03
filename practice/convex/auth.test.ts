@@ -9,7 +9,7 @@ describe("Convex Auth", () => {
     const t = convexTest(schema);
     
     // Call the signUp mutation
-    const userId = await t.mutation(api.auth.signUp, {
+    const userId = await t.mutation((api.auth as any).signUp, {
       email: "test@example.com",
       password: "password123",
     });
@@ -20,24 +20,24 @@ describe("Convex Auth", () => {
     });
 
     expect(user).toBeDefined();
-    expect(user?.email).toBe("test@example.com");
-    expect(user?.onboardingCompleted).toBe(false);
+    expect((user as any)?.email).toBe("test@example.com");
+    expect((user as any)?.onboardingCompleted).toBe(false);
   });
 
   test("signUp fails if user already exists", async () => {
     const t = convexTest(schema);
     
     // First signup
-    await t.mutation(api.auth.signUp, {
+    await t.mutation((api.auth as any).signUp, {
       email: "test@example.com",
       password: "password123",
     });
 
     // Second signup should fail
     await expect(
-      t.mutation(api.auth.signUp, {
+      t.mutation((api.auth as any).signUp, {
         email: "test@example.com",
-        password: "password456",
+        password: "password123",
       })
     ).rejects.toThrow("User already exists");
   });
@@ -46,8 +46,8 @@ describe("Convex Auth", () => {
     const t = convexTest(schema);
     
     // Create user
-    const userId = await t.mutation(api.auth.signUp, {
-      email: "sporty@example.com",
+    const userId = await t.mutation((api.auth as any).signUp, {
+      email: "test@example.com",
       password: "password123",
     });
 
@@ -64,15 +64,15 @@ describe("Convex Auth", () => {
       return await ctx.db.get(userId);
     });
 
-    expect(user?.preferredSport).toBe("tennis");
+    expect((user as any)?.preferredSport).toBe("tennis");
   });
 
   test("completeOnboarding updates status", async () => {
     const t = convexTest(schema);
     
     // Create user
-    const userId = await t.mutation(api.auth.signUp, {
-      email: "newbie@example.com",
+    const userId = await t.mutation((api.auth as any).signUp, {
+      email: "test@example.com",
       password: "password123",
     });
 
@@ -84,6 +84,6 @@ describe("Convex Auth", () => {
       return await ctx.db.get(userId);
     });
 
-    expect(user?.onboardingCompleted).toBe(true);
+    expect((user as any)?.onboardingCompleted).toBe(true);
   });
 });

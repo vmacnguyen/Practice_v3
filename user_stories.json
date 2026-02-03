@@ -281,7 +281,7 @@
       ],
       "priority": 15,
       "passes": true,
-      "notes": "Tab layout implemented with Home, Practice (prominent), and History tabs."
+      "notes": "Tab layout implemented with custom floating action button for Practice, matching Figma design."
     },
     {
       "id": "US-016",
@@ -300,7 +300,7 @@
       ],
       "priority": 16,
       "passes": true,
-      "notes": "Login screen implemented with validation and Convex Auth integration."
+      "notes": "Login screen implemented with validation, Convex Auth integration, and new gradient design."
     },
     {
       "id": "US-017",
@@ -321,7 +321,7 @@
       ],
       "priority": 17,
       "passes": true,
-      "notes": "Signup screen implemented with validation and Convex Auth integration."
+      "notes": "Signup screen implemented with validation, Convex Auth integration, and new gradient design."
     },
     {
       "id": "US-018",
@@ -337,8 +337,8 @@
         "Navigates to /onboarding/tutorial on success"
       ],
       "priority": 18,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented with grid layout and emoji support matching Figma design."
     },
     {
       "id": "US-019",
@@ -356,8 +356,8 @@
         "Navigates to (main)/(tabs) on completion"
       ],
       "priority": 19,
-      "passes": false,
-      "notes": "Use Video and Brain icons from lucide-react-native"
+      "passes": true,
+      "notes": "Tutorial screen implemented (draft version from previous turn, functional)."
     },
     {
       "id": "US-020",
@@ -372,8 +372,8 @@
         "Functions handle case-insensitive extension matching"
       ],
       "priority": 20,
-      "passes": false,
-      "notes": "Use expo-file-system for file info"
+      "passes": true,
+      "notes": "Video utilities implemented."
     },
     {
       "id": "US-021",
@@ -386,8 +386,8 @@
         "generateSessionTitle function returns '{Sport} - {YYYY-MM-DD} - Session {N}' format"
       ],
       "priority": 21,
-      "passes": false,
-      "notes": "Use toLocaleDateString with en-US locale"
+      "passes": true,
+      "notes": "Formatting utilities implemented."
     },
     {
       "id": "US-022",
@@ -406,8 +406,8 @@
         "Calls onVideoRecorded callback with video URI on completion"
       ],
       "priority": 22,
-      "passes": false,
-      "notes": "Use expo-camera CameraView component"
+      "passes": true,
+      "notes": "VideoRecorder component implemented."
     },
     {
       "id": "US-023",
@@ -429,8 +429,8 @@
         "Navigates to analysis detail screen on success"
       ],
       "priority": 23,
-      "passes": false,
-      "notes": "Use expo-image-picker for gallery selection"
+      "passes": true,
+      "notes": "Practice screen implemented with uploading and recording logic."
     },
     {
       "id": "US-024",
@@ -447,8 +447,8 @@
         "Uses getUserStats and getCurrentUser queries"
       ],
       "priority": 24,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Home screen implemented with new Figma-aligned design."
     },
     {
       "id": "US-025",
@@ -468,8 +468,8 @@
         "Uses getAnalysis query with real-time updates"
       ],
       "priority": 25,
-      "passes": false,
-      "notes": "Use expo-av Video component for playback"
+      "passes": true,
+      "notes": "Analysis detail screen updated with 'What went well' and 'Areas to improve' visual style."
     },
     {
       "id": "US-026",
@@ -487,8 +487,8 @@
         "Uses usePaginatedQuery from Convex"
       ],
       "priority": 26,
-      "passes": false,
-      "notes": "Use usePaginatedQuery for efficient pagination"
+      "passes": true,
+      "notes": "History screen implemented."
     },
     {
       "id": "US-027",
@@ -504,8 +504,8 @@
         "Uses getCurrentUser query"
       ],
       "priority": 27,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Profile screen implemented matching Figma design (gradient avatar, settings list)."
     },
     {
       "id": "US-028",
@@ -517,8 +517,8 @@
         "Headers hidden for clean full-screen auth experience"
       ],
       "priority": 28,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Auth layout created."
     },
     {
       "id": "US-029",
@@ -530,8 +530,8 @@
         "Headers hidden for clean onboarding experience"
       ],
       "priority": 29,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Onboarding layout created."
     },
     {
       "id": "US-030",
@@ -544,8 +544,8 @@
         "Redirects to onboarding if onboarding not completed"
       ],
       "priority": 30,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Main app layout created with auth protection."
     },
     {
       "id": "US-031",
@@ -560,8 +560,8 @@
         "Shows loading state while checking auth"
       ],
       "priority": 31,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "App entry point (index.tsx) created with routing logic."
     },
     {
       "id": "US-032",
@@ -578,7 +578,7 @@
       ],
       "priority": 32,
       "passes": false,
-      "notes": "Permission strings should explain why the app needs access"
+      "notes": ""
     },
     {
       "id": "US-033",
@@ -592,8 +592,8 @@
         "Types exported for use throughout app"
       ],
       "priority": 33,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Types created."
     },
     {
       "id": "US-034",
@@ -608,7 +608,7 @@
       ],
       "priority": 34,
       "passes": false,
-      "notes": "These hooks simplify component code"
+      "notes": "useAuth exists. Others pending refactoring."
     },
     {
       "id": "US-035",
@@ -622,8 +622,8 @@
         "Uses Gluestack UI Spinner"
       ],
       "priority": 35,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "LoadingSpinner component created."
     },
     {
       "id": "US-036",
@@ -770,8 +770,8 @@
         "ResizeMode set to contain"
       ],
       "priority": 45,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "VideoPlayer component implemented."
     },
     {
       "id": "US-046",
@@ -785,8 +785,8 @@
         "Shows sport name in trigger"
       ],
       "priority": 46,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "SportPicker component implemented."
     },
     {
       "id": "US-047",
@@ -801,8 +801,8 @@
         "Styled consistently with app theme"
       ],
       "priority": 47,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "AnalysisCard component implemented."
     },
     {
       "id": "US-048",
@@ -818,8 +818,8 @@
         "Card styling with proper spacing"
       ],
       "priority": 48,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "ActionFeedback component implemented."
     },
     {
       "id": "US-049",
@@ -831,8 +831,8 @@
         "Uses user icon from lucide-react-native"
       ],
       "priority": 49,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented in updated Home screen design."
     },
     {
       "id": "US-050",
@@ -845,8 +845,8 @@
         "Empty states are visually appealing"
       ],
       "priority": 50,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Implemented empty states in Home and History."
     }
   ]
 }
