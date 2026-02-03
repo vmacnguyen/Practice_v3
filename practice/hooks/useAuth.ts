@@ -7,6 +7,9 @@ export function useAuth() {
   const { signIn, signOut } = useAuthActions();
   const user = useQuery(api.auth.getCurrentUser);
 
+  // Debug logging
+  // console.log("[useAuth] Hook State:", { isAuthenticated, isLoading, userLoaded: !!user });
+
   return {
     isAuthenticated,
     isLoading,

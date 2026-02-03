@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Alert } from 'react-native';
+import { Alert, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useQuery, useMutation } from 'convex/react';
@@ -9,9 +9,10 @@ import { api } from '../../../convex/_generated/api';
 import VideoRecorder from '../../../components/video/VideoRecorder';
 import { validateVideo } from '../../../utils/video';
 import { SPORTS_LIST } from '../../../config/sports-config';
+import { LinearGradient } from 'expo-linear-gradient';
 import {
-  Box, VStack, Text, Button, ButtonText, ButtonIcon,
-  Heading, Select, SelectTrigger, SelectInput, SelectIcon,
+  Box, VStack, Text, Heading, 
+  Select, SelectTrigger, SelectInput, SelectIcon,
   SelectPortal, SelectBackdrop, SelectContent, SelectDragIndicatorWrapper,
   SelectDragIndicator, SelectItem, Icon, ChevronDownIcon,
   HStack, Spinner, Center
@@ -27,7 +28,6 @@ export default function PracticeScreen() {
   const [selectedSport, setSelectedSport] = useState<string>('');
   const [isRecorderOpen, setIsRecorderOpen] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
-  const [uploadProgress, setUploadProgress] = useState(0);
 
   useEffect(() => {
     if (user?.preferredSport && !selectedSport) {
@@ -56,20 +56,22 @@ export default function PracticeScreen() {
       // 2. Get Upload URL
       const uploadUrl = await generateUploadUrl();
 
-      // 3. Upload File
-      // Using FileSystem.uploadAsync for reliable background upload
-      const uploadResult = await FileSystem.uploadAsync(uploadUrl, uri, {
-        httpMethod: 'POST',
-        // 1 represents FileSystemUploadType.BINARY_CONTENT
-        uploadType: 1 as any,
-        mimeType: 'video/mp4', // Assuming mp4 from camera/validation
+      // 3. Upload File using fetch to ensure raw binary transmission
+      // We read the file as a string (base64) then convert to blob/buffer behavior via fetch body
+      const response = await fetch(uri);
+      const blob = await response.blob();
+      
+      const uploadResult = await fetch(uploadUrl, {
+        method: "POST",
+        headers: { "Content-Type": "video/mp4" },
+        body: blob,
       });
 
-      if (uploadResult.status !== 200) {
-        throw new Error('Upload failed');
+      if (!uploadResult.ok) {
+        throw new Error(`Upload failed: ${uploadResult.statusText}`);
       }
 
-      const { storageId } = JSON.parse(uploadResult.body);
+      const { storageId } = await uploadResult.json();
 
       // 4. Create Analysis
       const analysisId = await createAnalysis({
@@ -90,10 +92,10 @@ export default function PracticeScreen() {
 
   const openGallery = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Videos,
-      allowsEditing: true, // Allows trimming
+      mediaTypes: ['videos'],
+      allowsEditing: true,
       quality: 1,
-      videoMaxDuration: 60, // Helper, but we validate too
+      videoMaxDuration: 60,
     });
 
     if (!result.canceled && result.assets && result.assets.length > 0) {
@@ -112,87 +114,114 @@ export default function PracticeScreen() {
 
   if (isUploading) {
     return (
-      <Box flex={1} bg="$backgroundLight0" justifyContent="center" alignItems="center" p="$6">
-        <Spinner size="large" color="$primary500" mb="$4" />
-        <Heading size="lg" mb="$2">Uploading Video...</Heading>
-        <Text textAlign="center" color="$textLight500">
-          Please wait while we prepare your video for analysis.
+      <Box flex={1} bg="#F9FAFB" justifyContent="center" alignItems="center" p="$6">
+        <Box bg="#DBEAFE" p="$6" rounded="$full" mb="$6">
+          <Spinner size="large" color="#155DFC" />
+        </Box>
+        <Heading size="xl" color="#0A0A0A" mb="$2">Analyzing your video...</Heading>
+        <Text textAlign="center" color="#4A5565">
+          This will just take a moment
         </Text>
       </Box>
     );
   }
 
   return (
-    <Box flex={1} bg="$backgroundLight0">
+    <Box flex={1} bg="#F9FAFB">
       <SafeAreaView style={{ flex: 1 }}>
-        <VStack space="xl" p="$4" flex={1}>
-        <VStack space="xs">
-          <Heading size="2xl">Practice</Heading>
-          <Text color="$textLight500">Record or upload a video to get AI feedback.</Text>
-        </VStack>
+        <VStack space="xl" p="$6" flex={1}>
+          {/* Header */}
+          <Box pt="$2">
+            <Heading size="3xl" color="#0A0A0A" mb="$2">Add a practice</Heading>
+          </Box>
 
-        <VStack space="sm">
-          <Text fontWeight="$medium" color="$textLight700">Select Sport</Text>
-          <Select
-            selectedValue={selectedSport}
-            onValueChange={setSelectedSport}
+          {/* Main Card */}
+          <Box 
+            bg="white" 
+            rounded="$2xl" 
+            borderWidth={2} 
+            borderColor="#D1D5DC" 
+            p="$8" 
+            alignItems="center"
           >
-            <SelectTrigger variant="outline" size="lg">
-              <SelectInput placeholder="Select option" />
-              <SelectIcon mr="$3" as={ChevronDownIcon} />
-            </SelectTrigger>
-            <SelectPortal>
-              <SelectBackdrop />
-              <SelectContent>
-                <SelectDragIndicatorWrapper>
-                  <SelectDragIndicator />
-                </SelectDragIndicatorWrapper>
-                {SPORTS_LIST.map((sport) => (
-                  <SelectItem
-                    key={sport.id}
-                    label={sport.name}
-                    value={sport.id}
-                  />
-                ))}
-              </SelectContent>
-            </SelectPortal>
-          </Select>
+            {/* Icon Circle */}
+            <Box bg="#DBEAFE" p="$6" rounded="$full" mb="$6">
+              <Icon as={Upload} size="xl" color="#155DFC" />
+            </Box>
+            
+            <Text color="#4A5565" textAlign="center" mb="$8" px="$4">
+              Get instant AI-powered analysis of your practice session
+            </Text>
+
+            <VStack space="md" w="100%">
+              {/* Choose from Library Button */}
+              <TouchableOpacity onPress={openGallery}>
+                <Box bg="#155DFC" py="$3" rounded="$lg" flexDirection="row" alignItems="center" justifyContent="center">
+                  <Icon as={Upload} color="white" size="sm" mr="$2" />
+                  <Text color="white" fontWeight="$medium">Choose from Library</Text>
+                </Box>
+              </TouchableOpacity>
+
+              {/* Record Now Button */}
+              <TouchableOpacity onPress={() => setIsRecorderOpen(true)}>
+                <Box bg="white" borderWidth={1} borderColor="rgba(0,0,0,0.1)" py="$3" rounded="$lg" flexDirection="row" alignItems="center" justifyContent="center">
+                  <Icon as={VideoIcon} color="#0A0A0A" size="sm" mr="$2" />
+                  <Text color="#0A0A0A" fontWeight="$medium">Record Now</Text>
+                </Box>
+              </TouchableOpacity>
+            </VStack>
+          </Box>
+
+          {/* Sport Selector */}
+          <VStack space="xs">
+            <Text size="sm" fontWeight="$semibold" color="#364153">Select Sport</Text>
+            <Select
+              selectedValue={selectedSport}
+              onValueChange={setSelectedSport}
+            >
+              <SelectTrigger variant="outline" size="lg" borderColor="#D1D5DC" rounded="$lg" bg="white">
+                <SelectInput placeholder="Select option" color="#0A0A0A" />
+                <SelectIcon mr="$3" as={ChevronDownIcon} />
+              </SelectTrigger>
+              <SelectPortal>
+                <SelectBackdrop />
+                <SelectContent>
+                  <SelectDragIndicatorWrapper>
+                    <SelectDragIndicator />
+                  </SelectDragIndicatorWrapper>
+                  {SPORTS_LIST.map((sport) => (
+                    <SelectItem
+                      key={sport.id}
+                      label={`${sport.emoji} ${sport.name}`}
+                      value={sport.id}
+                    />
+                  ))}
+                </SelectContent>
+              </SelectPortal>
+            </Select>
+          </VStack>
+
+          {/* Tips Section */}
+          <Box mt="$4">
+            <Text size="sm" fontWeight="$semibold" color="#364153" mb="$3">
+              Tips for best results:
+            </Text>
+            <VStack space="sm">
+              {[
+                'Position camera to capture full body movement',
+                'Ensure good lighting for accurate analysis',
+                'Keep camera stable throughout recording',
+              ].map((tip, index) => (
+                <HStack key={index} space="md" alignItems="center">
+                  <Box bg="#DBEAFE" w={20} h={20} rounded="$full" alignItems="center" justifyContent="center">
+                    <Text color="#155DFC" size="xs" fontWeight="$bold">{index + 1}</Text>
+                  </Box>
+                  <Text size="sm" color="#4A5565">{tip}</Text>
+                </HStack>
+              ))}
+            </VStack>
+          </Box>
         </VStack>
-
-        <VStack flex={1} justifyContent="center" space="lg">
-           <Button
-            size="xl"
-            variant="solid"
-            action="primary"
-            onPress={() => setIsRecorderOpen(true)}
-            isDisabled={!selectedSport}
-            bg="$primary500"
-            $active-bg="$primary600"
-          >
-            <ButtonIcon as={VideoIcon} color="$white" mr="$2" />
-            <ButtonText>Record Video</ButtonText>
-          </Button>
-
-          <Button
-            size="xl"
-            variant="outline"
-            action="secondary"
-            onPress={openGallery}
-            isDisabled={!selectedSport}
-            borderColor="$primary500"
-          >
-             <ButtonIcon as={Upload} color="$primary500" mr="$2" />
-            <ButtonText color="$primary500">Upload from Gallery</ButtonText>
-          </Button>
-
-          {!selectedSport && (
-             <HStack space="sm" alignItems="center" justifyContent="center" mt="$2">
-               <Icon as={AlertCircle} color="$error500" size="sm" />
-               <Text color="$error500" size="sm">Please select a sport first</Text>
-             </HStack>
-          )}
-        </VStack>
-      </VStack>
       </SafeAreaView>
     </Box>
   );

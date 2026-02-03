@@ -1,22 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { CameraView, useCameraPermissions, useMicrophonePermissions } from 'expo-camera';
 import {
-  Box,
   Text,
-  Icon,
-  VStack,
-  HStack,
   Button,
   ButtonText,
+  Icon,
 } from '@gluestack-ui/themed';
 import {
-  Camera,
-  StopCircle,
   RefreshCw,
   X,
-  Video as VideoIcon
 } from 'lucide-react-native';
 import { ENV } from '../../config/env';
 
@@ -55,13 +49,12 @@ export default function VideoRecorder({ onVideoRecorded, onCancel }: VideoRecord
   }, [isRecording]);
 
   if (!permission || !micPermission) {
-    // Camera permissions are still loading
-    return <Box flex={1} bg="$black" />;
+    return <View style={{ flex: 1, backgroundColor: 'black' }} />;
   }
 
   if (!permission.granted || !micPermission.granted) {
     return (
-      <Box flex={1} justifyContent="center" alignItems="center" bg="$black" p="$4">
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'black', padding: 16 }}>
         <Text color="$white" textAlign="center" mb="$4">
           We need your permission to use the camera and microphone.
         </Text>
@@ -74,7 +67,7 @@ export default function VideoRecorder({ onVideoRecorded, onCancel }: VideoRecord
         <Button variant="link" onPress={onCancel} mt="$4">
           <ButtonText color="$white">Cancel</ButtonText>
         </Button>
-      </Box>
+      </View>
     );
   }
 
@@ -114,68 +107,64 @@ export default function VideoRecorder({ onVideoRecorded, onCancel }: VideoRecord
   };
 
   return (
-    <Box flex={1} bg="$black">
+    <View style={{ flex: 1, backgroundColor: 'black' }}>
       <CameraView
-        style={styles.camera}
+        style={StyleSheet.absoluteFill}
         facing={facing}
         ref={cameraRef}
         mode="video"
-      >
-        <SafeAreaView style={{ flex: 1 }}>
-          <Box flex={1} justifyContent="space-between" p="$4">
-            {/* Top Bar */}
-            <HStack justifyContent="space-between" alignItems="center">
-            <TouchableOpacity onPress={onCancel} disabled={isRecording}>
-              <Box bg="$black" opacity={0.6} p="$2" rounded="$full">
-                <Icon as={X} color="$white" size="xl" />
-              </Box>
-            </TouchableOpacity>
+      />
+      
+      <SafeAreaView style={{ flex: 1, justifyContent: 'space-between', padding: 16 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+          <TouchableOpacity onPress={onCancel} disabled={isRecording}>
+            <View style={{ backgroundColor: 'rgba(0,0,0,0.6)', padding: 8, borderRadius: 999 }}>
+              <Icon as={X} color="$white" size="xl" />
+            </View>
+          </TouchableOpacity>
 
-            <Box bg="$error500" px="$3" py="$1" rounded="$full" opacity={isRecording ? 1 : 0}>
-              <Text color="$white" fontWeight="$bold">
-                {formatTime(duration)} / {formatTime(ENV.MAX_VIDEO_DURATION_SECONDS)}
-              </Text>
-            </Box>
+          <View style={{ backgroundColor: isRecording ? '#EF4444' : 'transparent', paddingHorizontal: 12, paddingVertical: 4, borderRadius: 999 }}>
+            <Text color="$white" fontWeight="$bold">
+              {formatTime(duration)} / {formatTime(ENV.MAX_VIDEO_DURATION_SECONDS)}
+            </Text>
+          </View>
 
-            <Box w={40} /> {/* Spacer */}
-          </HStack>
+          <View style={{ width: 40 }} />
+        </View>
 
-          {/* Bottom Bar */}
-          <HStack justifyContent="space-around" alignItems="center" pb="$8">
-             <Box w={50} /> {/* Spacer */}
+        <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', paddingBottom: 32 }}>
+          <View style={{ width: 50 }} />
 
-            <TouchableOpacity
-              onPress={isRecording ? stopRecording : startRecording}
-              style={styles.recordButtonContainer}
-            >
-              <Box
-                w={80}
-                h={80}
-                rounded="$full"
-                borderWidth={4}
-                borderColor="$white"
-                justifyContent="center"
-                alignItems="center"
-              >
-                <Box
-                  w={isRecording ? 40 : 70}
-                  h={isRecording ? 40 : 70}
-                  rounded={isRecording ? "$sm" : "$full"}
-                  bg="$error500"
-                />
-              </Box>
-            </TouchableOpacity>
+          <TouchableOpacity
+            onPress={isRecording ? stopRecording : startRecording}
+            style={styles.recordButtonContainer}
+          >
+            <View style={{
+              width: 80,
+              height: 80,
+              borderRadius: 999,
+              borderWidth: 4,
+              borderColor: 'white',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}>
+              <View style={{
+                width: isRecording ? 40 : 70,
+                height: isRecording ? 40 : 70,
+                borderRadius: isRecording ? 6 : 999,
+                backgroundColor: '#EF4444'
+              }} />
+            </View>
+          </TouchableOpacity>
 
-            <TouchableOpacity onPress={toggleCameraFacing} disabled={isRecording}>
-              <Box bg="$black" opacity={isRecording ? 0.3 : 0.6} p="$3" rounded="$full">
-                <Icon as={RefreshCw} color="$white" size="xl" />
-              </Box>
-            </TouchableOpacity>
-          </HStack>
-          </Box>
-        </SafeAreaView>
-      </CameraView>
-    </Box>
+          <TouchableOpacity onPress={toggleCameraFacing} disabled={isRecording}>
+            <View style={{ backgroundColor: 'rgba(0,0,0,0.6)', padding: 12, borderRadius: 999, opacity: isRecording ? 0.3 : 1 }}>
+              <Icon as={RefreshCw} color="$white" size="xl" />
+            </View>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    </View>
   );
 }
 

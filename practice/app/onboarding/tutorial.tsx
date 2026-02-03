@@ -3,6 +3,7 @@ import { useRouter } from 'expo-router';
 import { useMutation } from 'convex/react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { api } from '../../convex/_generated/api';
+import { useAuth } from '../../hooks/useAuth';
 import {
   Box,
   VStack,
@@ -34,6 +35,7 @@ const STEPS = [
 
 export default function TutorialScreen() {
   const router = useRouter();
+  const { isAuthenticated, isLoading } = useAuth();
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -48,6 +50,13 @@ export default function TutorialScreen() {
   };
 
   const handleComplete = async () => {
+    if (isLoading) return;
+    
+    if (!isAuthenticated) {
+      console.warn("User not authenticated, cannot complete onboarding");
+      return;
+    }
+    
     try {
       setIsSubmitting(true);
       await completeOnboarding();

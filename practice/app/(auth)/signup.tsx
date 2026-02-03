@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { useRouter, Link } from 'expo-router';
 import { useAuth } from '../../hooks/useAuth';
+import { LinearGradient } from 'expo-linear-gradient';
 import {
   VStack,
   FormControl,
   FormControlLabel,
   FormControlLabelText,
-  FormControlHelper,
-  FormControlHelperText,
   Input,
   InputField,
   Button,
@@ -21,6 +20,7 @@ import {
   ToastTitle,
   ToastDescription,
 } from '@gluestack-ui/themed';
+import { TouchableOpacity } from 'react-native';
 
 export default function SignupScreen() {
   const [email, setEmail] = useState('');
@@ -29,14 +29,18 @@ export default function SignupScreen() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const { signIn } = useAuth();
+  const { signIn, signOut } = useAuth();
   const router = useRouter();
   const toast = useToast();
+
+  // Clear any stale auth state on mount
+  React.useEffect(() => {
+    void signOut();
+  }, []);
 
   const handleSignup = async () => {
     setError('');
 
-    // Validation
     if (password.length < 8) {
       setError('Password must be at least 8 characters long');
       return;
@@ -49,7 +53,6 @@ export default function SignupScreen() {
 
     setLoading(true);
     try {
-      // Flow: 'signUp' triggers the signup flow in Convex Auth
       await signIn("password", { email, password, flow: "signUp" });
       router.replace('/onboarding');
     } catch (err: any) {
@@ -73,71 +76,89 @@ export default function SignupScreen() {
   };
 
   return (
-    <Center flex={1} px="$4" bg="$white">
-      <VStack space="md" w="$full" maxW="$96">
-        <Heading size="xl">Create Account</Heading>
-        <Text size="sm" color="$coolGray600">
-          Join Practice to improve your skills with AI.
-        </Text>
+    <Center flex={1} px="$6" bg="#F9FAFB">
+      <VStack space="lg" w="$full">
+        <Box alignItems="center" mb="$4">
+          <Text fontSize={40} mb="$2">🚀</Text>
+          <Heading size="3xl" color="#0A0A0A" mb="$2">Create Account</Heading>
+          <Text size="md" color="#4A5565" textAlign="center">
+            Join Practice to improve your skills with AI
+          </Text>
+        </Box>
 
-        <FormControl isInvalid={!!error}>
-          <FormControlLabel>
-            <FormControlLabelText>Email</FormControlLabelText>
-          </FormControlLabel>
-          <Input>
-            <InputField
-              value={email}
-              onChangeText={setEmail}
-              keyboardType="email-address"
-              autoCapitalize="none"
-              placeholder="Enter your email"
-            />
-          </Input>
-        </FormControl>
+        <VStack space="md">
+          <FormControl isInvalid={!!error}>
+            <FormControlLabel mb="$1">
+              <FormControlLabelText color="#364153">Email</FormControlLabelText>
+            </FormControlLabel>
+            <Input size="xl" bg="white" borderWidth={1} borderColor="#E5E7EB" rounded="$lg">
+              <InputField
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                placeholder="your.email@example.com"
+                color="#0A0A0A"
+              />
+            </Input>
+          </FormControl>
 
-        <FormControl isInvalid={!!error}>
-          <FormControlLabel>
-            <FormControlLabelText>Password</FormControlLabelText>
-          </FormControlLabel>
-          <Input>
-            <InputField
-              value={password}
-              onChangeText={setPassword}
-              secureTextEntry
-              placeholder="Enter your password"
-            />
-          </Input>
-          <FormControlHelper>
-            <FormControlHelperText>
-              Must be at least 8 characters.
-            </FormControlHelperText>
-          </FormControlHelper>
-        </FormControl>
+          <FormControl isInvalid={!!error}>
+            <FormControlLabel mb="$1">
+              <FormControlLabelText color="#364153">Password</FormControlLabelText>
+            </FormControlLabel>
+            <Input size="xl" bg="white" borderWidth={1} borderColor="#E5E7EB" rounded="$lg">
+              <InputField
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry
+                placeholder="Create a password"
+                color="#0A0A0A"
+              />
+            </Input>
+          </FormControl>
 
-        <FormControl isInvalid={!!error}>
-          <FormControlLabel>
-            <FormControlLabelText>Confirm Password</FormControlLabelText>
-          </FormControlLabel>
-          <Input>
-            <InputField
-              value={confirmPassword}
-              onChangeText={setConfirmPassword}
-              secureTextEntry
-              placeholder="Confirm your password"
-            />
-          </Input>
-        </FormControl>
+          <FormControl isInvalid={!!error}>
+            <FormControlLabel mb="$1">
+              <FormControlLabelText color="#364153">Confirm Password</FormControlLabelText>
+            </FormControlLabel>
+            <Input size="xl" bg="white" borderWidth={1} borderColor="#E5E7EB" rounded="$lg">
+              <InputField
+                value={confirmPassword}
+                onChangeText={setConfirmPassword}
+                secureTextEntry
+                placeholder="Confirm password"
+                color="#0A0A0A"
+              />
+            </Input>
+          </FormControl>
+        </VStack>
 
-        {error ? <Text color="$red500" size="sm">{error}</Text> : null}
+        {error ? <Text color="$red500" size="sm" textAlign="center">{error}</Text> : null}
 
-        <Button onPress={handleSignup} isDisabled={loading}>
-          {loading ? <ButtonText>Creating Account...</ButtonText> : <ButtonText>Sign Up</ButtonText>}
-        </Button>
+        <TouchableOpacity onPress={handleSignup} disabled={loading}>
+          <LinearGradient
+            colors={['#155DFC', '#9810FA']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={{
+              paddingVertical: 16,
+              borderRadius: 8,
+              alignItems: 'center',
+              justifyContent: 'center',
+              opacity: loading ? 0.7 : 1,
+            }}
+          >
+            <Text color="white" fontWeight="$bold" size="lg">
+              {loading ? 'Creating Account...' : 'Sign Up'}
+            </Text>
+          </LinearGradient>
+        </TouchableOpacity>
 
         <Box flexDirection="row" justifyContent="center" mt="$4">
-          <Text size="sm">Already have an account? </Text>
+          <Text size="md" color="#4A5565">Already have an account? </Text>
           <Link href="/(auth)/login" asChild>
-            <Text size="sm" color="$primary500" fontWeight="$bold">
+            <Text size="md" color="#155DFC" fontWeight="$bold">
               Sign In
             </Text>
           </Link>

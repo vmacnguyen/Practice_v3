@@ -3,6 +3,7 @@ import { mutation, query, internalMutation, internalQuery } from "./_generated/s
 import { getAuthUserId } from "@convex-dev/auth/server";
 import { ConvexError } from "convex/values";
 import { internal } from "./_generated/api";
+import { paginationOptsValidator } from "convex/server";
 
 // Create a new analysis record (pending state)
 export const createAnalysis = mutation({
@@ -71,26 +72,17 @@ export const getAnalysis = query({
 // Get paginated analysis history
 export const getAnalysisHistory = query({
   args: {
-    cursor: v.optional(v.string()),
-    limit: v.optional(v.number()),
+    paginationOpts: paginationOptsValidator,
   },
   handler: async (ctx, args) => {
     const userId = await getAuthUserId(ctx);
     if (!userId) throw new ConvexError("Not authenticated");
 
-    const limit = args.limit || 10;
-
-    const paginationResult = await ctx.db
+    return await ctx.db
       .query("analyses")
       .withIndex("by_user_and_created", (q) => q.eq("userId", userId))
       .order("desc")
-      .paginate({ cursor: args.cursor || null, numItems: limit });
-
-    return {
-      items: paginationResult.page,
-      cursor: paginationResult.continueCursor,
-      hasMore: !paginationResult.isDone,
-    };
+      .paginate(args.paginationOpts);
   },
 });
 

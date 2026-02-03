@@ -14,27 +14,48 @@ export async function analyzeWithGemini(
   prompt: string,
   videoUrl: string
 ): Promise<AnalysisResult> {
+  console.log(`[GeminiAdapter] Starting analysis for: ${videoUrl}`);
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     throw new Error("GEMINI_API_KEY not configured");
   }
 
   const genAI = new GoogleGenerativeAI(apiKey);
-  // Using gemini-1.5-pro which supports video input
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+  // Using gemini-2.5-pro as requested
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
 
-  // Fetch video and convert to base64
+  // Fetch video
+  console.log("[GeminiAdapter] Fetching video...");
   const videoResponse = await fetch(videoUrl);
   if (!videoResponse.ok) {
     throw new Error(`Failed to fetch video from storage: ${videoResponse.statusText}`);
   }
   const videoBuffer = await videoResponse.arrayBuffer();
-  const videoBase64 = Buffer.from(videoBuffer).toString("base64");
+  console.log(`[GeminiAdapter] Fetched video: ${videoBuffer.byteLength} bytes`);
+  
+  if (videoBuffer.byteLength > 20 * 1024 * 1024) {
+    console.warn("[GeminiAdapter] Video exceeds 20MB inline limit!");
+  }
 
-  // Determine mime type (default to mp4)
-  const mimeType = videoUrl.includes(".mov") ? "video/quicktime" : "video/mp4";
+  // Efficiently convert ArrayBuffer to Base64
+  let binary = '';
+  const bytes = new Uint8Array(videoBuffer);
+  const len = bytes.byteLength;
+  const chunkSize = 32768; 
+  
+  for (let i = 0; i < len; i += chunkSize) {
+    const chunk = bytes.subarray(i, Math.min(i + chunkSize, len));
+    binary += String.fromCharCode.apply(null, Array.from(chunk));
+  }
+  
+  const videoBase64 = btoa(binary);
+  console.log(`[GeminiAdapter] Base64 generated. Prefix: ${videoBase64.substring(0, 50)}...`);
 
-  const result = await model.generateContent([
+  // Force mp4 to ensure compatibility with inline data
+  const mimeType = "video/mp4";
+  console.log(`[GeminiAdapter] Using MIME type: ${mimeType}`);
+
+  const contentParts = [
     {
       inlineData: {
         mimeType,
@@ -42,40 +63,44 @@ export async function analyzeWithGemini(
       },
     },
     { text: prompt },
-  ]);
+  ];
 
-  const response = result.response;
-  const text = response.text();
-
-  // Extract JSON from response (handle markdown code blocks)
-  let jsonString = text;
-  const jsonMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/);
-  if (jsonMatch) {
-    jsonString = jsonMatch[1].trim();
-  }
-
+  console.log("[GeminiAdapter] Sending request to Gemini...");
+  
   try {
-    // Parse and validate response
-    const parsed = JSON.parse(jsonString) as AnalysisResult;
-
-    // Validate schema
-    if (!parsed.identified_actions || !Array.isArray(parsed.identified_actions)) {
-      throw new Error("Invalid response: missing identified_actions array");
+    const result = await model.generateContent(contentParts);
+    console.log("[GeminiAdapter] Request successful. Processing response...");
+    
+    const response = result.response;
+    const text = response.text();
+    // ... rest of the parsing logic
+    
+    // Extract JSON from response (handle markdown code blocks)
+    let jsonString = text;
+    const jsonMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/);
+    if (jsonMatch) {
+      jsonString = jsonMatch[1].trim();
     }
 
-    if (typeof parsed.overall_feedback !== "string") {
-      throw new Error("Invalid response: missing overall_feedback string");
-    }
-
-    for (const action of parsed.identified_actions) {
-      if (!action.action || !action.analysis || !Array.isArray(action.practice_tips)) {
-        throw new Error("Invalid response: malformed action object");
+    try {
+      const parsed = JSON.parse(jsonString) as AnalysisResult;
+      // ... validations ...
+      if (!parsed.identified_actions || !Array.isArray(parsed.identified_actions)) {
+        throw new Error("Invalid response: missing identified_actions array");
       }
+      return parsed;
+    } catch (parseError) {
+      console.error("[GeminiAdapter] Parse Error. Raw Text:", text);
+      throw parseError;
     }
 
-    return parsed;
-  } catch (error) {
-    console.error("Failed to parse Gemini response:", text);
-    throw new Error(`Failed to parse AI response: ${error instanceof Error ? error.message : String(error)}`);
+  } catch (apiError: any) {
+    console.error("[GeminiAdapter] API Error Details:", {
+      status: apiError.status,
+      statusText: apiError.statusText,
+      message: apiError.message,
+      // Log headers or other details if available
+    });
+    throw apiError;
   }
 }

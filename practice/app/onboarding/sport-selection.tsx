@@ -1,151 +1,115 @@
 import React, { useState } from 'react';
-import { ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useMutation } from 'convex/react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { api } from '../../convex/_generated/api';
+import { useAuth } from '../../hooks/useAuth';
 import { SPORTS_LIST } from '../../config/sports-config';
 import {
   Box,
   VStack,
   Text,
-  Button,
-  ButtonText,
   Heading,
-  HStack,
   Pressable,
+  HStack,
   Icon,
+  Spinner,
 } from '@gluestack-ui/themed';
-import {
-  Dumbbell,
-  Activity,
-  Target,
-  Wind,
-  Snowflake,
-  Trophy,
-  Medal,
-  CheckCircle
-} from 'lucide-react-native';
-
-// Icon mapping helper
-const getSportIcon = (iconName: string) => {
-  switch (iconName) {
-    case 'tennis': return Activity; // Fallback
-    case 'volleyball': return Activity; // Fallback
-    case 'racquet': return Activity; // Fallback for Pickleball
-    case 'badminton': return Activity; // Fallback
-    case 'golf': return Target;
-    case 'dumbbell': return Dumbbell;
-    case 'ballet': return Wind; // Abstract
-    case 'snowboard': return Snowflake;
-    default: return Trophy;
-  }
-};
+import { ChevronLeft } from 'lucide-react-native';
 
 export default function SportSelectionScreen() {
   const router = useRouter();
+  const { isAuthenticated, isLoading, user } = useAuth();
   const [selectedSport, setSelectedSport] = useState<string | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
   const updatePreferredSport = useMutation(api.auth.updatePreferredSport);
 
-  const handleContinue = async () => {
-    if (!selectedSport) return;
+  console.log("SportSelection Render:", { isAuthenticated, isLoading, userId: user?._id });
+
+  const handleSelectSport = async (sportId: string) => {
+    setSelectedSport(sportId);
+    
+    if (isLoading) return;
+
+    if (!isAuthenticated) {
+      console.log('Waiting for authentication...');
+      // In a real scenario we might wait or show a loader, 
+      // but here we block navigation to prevent broken state.
+      return; 
+    }
 
     try {
-      setIsSubmitting(true);
-      await updatePreferredSport({ sport: selectedSport });
+      await updatePreferredSport({ sport: sportId });
+      // Only navigate on success
       router.push('/onboarding/tutorial');
     } catch (error) {
       console.error('Failed to update sport:', error);
-      // Could add toast here
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
-  return (
-    <Box flex={1} bg="$backgroundLight0">
-      <SafeAreaView style={{ flex: 1 }}>
-        <VStack space="xl" flex={1} px="$4" py="$6">
-        <VStack space="xs">
-          <Heading size="xl" color="$textLight900">
-            What do you practice?
-          </Heading>
-          <Text color="$textLight500" size="md">
-            Select your primary sport to get personalized feedback.
-          </Text>
-        </VStack>
+  if (isLoading) {
+    return (
+      <Box flex={1} bg="#F9FAFB" justifyContent="center" alignItems="center">
+        <Spinner size="large" color="#155DFC" />
+        <Text color="#4A5565" mt="$4">Checking authentication...</Text>
+      </Box>
+    );
+  }
 
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <VStack space="md" pb="$24">
+  return (
+    <Box flex={1} bg="#F9FAFB">
+      <SafeAreaView style={{ flex: 1 }}>
+        <VStack flex={1} p="$6">
+          {/* Header */}
+          <Pressable onPress={() => router.back()} mb="$6">
+            <HStack alignItems="center" space="xs">
+              <Icon as={ChevronLeft} color="#155DFC" size="md" />
+              <Text color="#155DFC" fontWeight="$medium">Back</Text>
+            </HStack>
+          </Pressable>
+
+          <Heading size="3xl" color="#0A0A0A" mb="$2">
+            Choose Your Sport
+          </Heading>
+          <Text color="#4A5565" size="md" mb="$8">
+            Select the sport you want to practice
+          </Text>
+
+          {/* Grid */}
+          <Box flexDirection="row" flexWrap="wrap" mx={-8}>
             {SPORTS_LIST.map((sport) => {
               const isSelected = selectedSport === sport.id;
-              const SportIcon = getSportIcon(sport.icon);
-
               return (
-                <Pressable
-                  key={sport.id}
-                  onPress={() => setSelectedSport(sport.id)}
-                  borderWidth={1}
-                  borderColor={isSelected ? '$primary500' : '$borderLight200'}
-                  bg={isSelected ? '$primary50' : '$white'}
-                  rounded="$lg"
-                  p="$4"
-                  $active-opacity={0.8}
-                >
-                  <HStack justifyContent="space-between" alignItems="center">
-                    <HStack space="md" alignItems="center">
-                      <Box
-                        bg={isSelected ? '$primary100' : '$backgroundLight100'}
-                        p="$2.5"
-                        rounded="$full"
-                      >
-                        <Icon
-                          as={SportIcon}
-                          size="xl"
-                          color={isSelected ? '$primary600' : '$textLight500'}
-                        />
-                      </Box>
-                      <Text
-                        fontWeight={isSelected ? '$bold' : '$medium'}
-                        color={isSelected ? '$textLight900' : '$textLight700'}
-                        size="lg"
-                      >
-                        {sport.name}
-                      </Text>
-                    </HStack>
-
-                    {isSelected && (
-                      <Icon as={CheckCircle} color="$primary500" size="xl" />
-                    )}
-                  </HStack>
-                </Pressable>
+                <Box key={sport.id} width="33.33%" p="$2">
+                  <Pressable
+                    onPress={() => handleSelectSport(sport.id)}
+                    bg="white"
+                    rounded="$2xl"
+                    p="$4"
+                    alignItems="center"
+                    justifyContent="center"
+                    borderWidth={2}
+                    borderColor={isSelected ? '#155DFC' : 'transparent'}
+                    style={{
+                      shadowColor: '#000',
+                      shadowOffset: { width: 0, height: 1 },
+                      shadowOpacity: 0.05,
+                      shadowRadius: 2,
+                      elevation: 1,
+                    }}
+                  >
+                    <Text fontSize={40} mb="$2">{sport.emoji}</Text>
+                    <Text
+                      color="#0A0A0A"
+                      fontWeight="$medium"
+                      size="sm"
+                      textAlign="center"
+                    >
+                      {sport.name}
+                    </Text>
+                  </Pressable>
+                </Box>
               );
             })}
-          </VStack>
-        </ScrollView>
-
-          <Box
-            p="$4"
-            bg="$backgroundLight0"
-            borderTopWidth={1}
-            borderTopColor="$borderLight100"
-          >
-            <Button
-              size="lg"
-              isDisabled={!selectedSport || isSubmitting}
-              onPress={handleContinue}
-              bg="$primary500"
-              $active-bg="$primary600"
-              $disabled-bg="$primary200"
-            >
-              {isSubmitting ? (
-                <ButtonText>Saving...</ButtonText>
-              ) : (
-                <ButtonText>Continue</ButtonText>
-              )}
-            </Button>
           </Box>
         </VStack>
       </SafeAreaView>
