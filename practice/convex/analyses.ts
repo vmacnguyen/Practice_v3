@@ -1,6 +1,6 @@
 import { v } from "convex/values";
 import { mutation, query, internalMutation, internalQuery } from "./_generated/server";
-import { getAuthUserId } from "@convex-dev/auth/server";
+import { getUserId } from "./auth";
 import { ConvexError } from "convex/values";
 import { internal } from "./_generated/api";
 import { paginationOptsValidator } from "convex/server";
@@ -12,7 +12,7 @@ export const createAnalysis = mutation({
     sport: v.string(),
   },
   handler: async (ctx, args) => {
-    const userId = await getAuthUserId(ctx);
+    const userId = await getUserId(ctx);
     if (!userId) throw new ConvexError("Not authenticated");
 
     const videoUrl = await ctx.storage.getUrl(args.videoStorageId);
@@ -58,7 +58,7 @@ export const createAnalysis = mutation({
 export const getAnalysis = query({
   args: { analysisId: v.id("analyses") },
   handler: async (ctx, args) => {
-    const userId = await getAuthUserId(ctx);
+    const userId = await getUserId(ctx);
     if (!userId) throw new ConvexError("Not authenticated");
 
     const analysis = await ctx.db.get(args.analysisId);
@@ -75,7 +75,7 @@ export const getAnalysisHistory = query({
     paginationOpts: paginationOptsValidator,
   },
   handler: async (ctx, args) => {
-    const userId = await getAuthUserId(ctx);
+    const userId = await getUserId(ctx);
     if (!userId) throw new ConvexError("Not authenticated");
 
     return await ctx.db
@@ -90,7 +90,7 @@ export const getAnalysisHistory = query({
 export const getUserStats = query({
   args: {},
   handler: async (ctx) => {
-    const userId = await getAuthUserId(ctx);
+    const userId = await getUserId(ctx);
     if (!userId) return null;
 
     const analyses = await ctx.db
@@ -113,7 +113,7 @@ export const getUserStats = query({
 export const retryAnalysis = mutation({
   args: { analysisId: v.id("analyses") },
   handler: async (ctx, args) => {
-    const userId = await getAuthUserId(ctx);
+    const userId = await getUserId(ctx);
     if (!userId) throw new ConvexError("Not authenticated");
 
     const analysis = await ctx.db.get(args.analysisId);

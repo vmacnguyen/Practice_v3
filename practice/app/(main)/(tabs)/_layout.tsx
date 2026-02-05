@@ -16,8 +16,8 @@ export default function TabLayout() {
           backgroundColor: 'white',
           borderTopColor: '#E5E7EB',
           borderTopWidth: 1,
-          paddingTop: 10,
-          paddingBottom: insets.bottom + 5,
+          paddingTop: 12,
+          paddingBottom: insets.bottom > 0 ? insets.bottom : 12,
         },
         tabBarShowLabel: false,
       }}
@@ -33,16 +33,6 @@ export default function TabLayout() {
                 color={focused ? '#155DFC' : '#6A7282'}
                 strokeWidth={2}
               />
-              <Text
-                style={{
-                  fontSize: 10,
-                  fontWeight: '500',
-                  color: focused ? '#155DFC' : '#6A7282',
-                  marginTop: 4,
-                }}
-              >
-                Home
-              </Text>
             </View>
           ),
         }}
@@ -53,7 +43,7 @@ export default function TabLayout() {
         options={{
           title: 'Practice',
           tabBarIcon: ({ focused }) => (
-            <View style={{ top: -20 }}>
+            <View style={{ top: -10 }}>
               <LinearGradient
                 colors={['#155DFC', '#9810FA']}
                 start={{ x: 0, y: 0 }}
@@ -73,17 +63,6 @@ export default function TabLayout() {
               >
                 <Video size={28} color="white" fill="white" />
               </LinearGradient>
-              <Text
-                style={{
-                  fontSize: 10,
-                  fontWeight: '500',
-                  color: focused ? '#155DFC' : '#6A7282',
-                  marginTop: 4,
-                  textAlign: 'center',
-                }}
-              >
-                Practice
-              </Text>
             </View>
           ),
         }}
@@ -100,16 +79,6 @@ export default function TabLayout() {
                 color={focused ? '#155DFC' : '#6A7282'}
                 strokeWidth={2}
               />
-              <Text
-                style={{
-                  fontSize: 10,
-                  fontWeight: '500',
-                  color: focused ? '#155DFC' : '#6A7282',
-                  marginTop: 4,
-                }}
-              >
-                History
-              </Text>
             </View>
           ),
         }}
