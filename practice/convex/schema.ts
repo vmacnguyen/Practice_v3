@@ -19,6 +19,7 @@ export default defineSchema({
   analyses: defineTable({
     userId: v.id("users"),
     videoStorageId: v.id("_storage"),
+    thumbnailStorageId: v.optional(v.id("_storage")),
     videoUrl: v.string(),
     sport: v.string(),
     identifiedActions: v.array(

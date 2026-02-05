@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useQuery, useMutation } from 'convex/react';
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
+import * as VideoThumbnails from 'expo-video-thumbnails';
 import { api } from '../../../convex/_generated/api';
 import VideoRecorder from '../../../components/video/VideoRecorder';
 import { validateVideo } from '../../../utils/video';
@@ -53,29 +54,60 @@ export default function PracticeScreen() {
     try {
       setIsUploading(true);
 
-      // 2. Get Upload URL
-      const uploadUrl = await generateUploadUrl();
-
-      // 3. Upload File using fetch to ensure raw binary transmission
-      // We read the file as a string (base64) then convert to blob/buffer behavior via fetch body
-      const response = await fetch(uri);
-      const blob = await response.blob();
-      
-      const uploadResult = await fetch(uploadUrl, {
-        method: "POST",
-        headers: { "Content-Type": "video/mp4" },
-        body: blob,
-      });
-
-      if (!uploadResult.ok) {
-        throw new Error(`Upload failed: ${uploadResult.statusText}`);
+      // Generate Thumbnail (attempt at 1s mark, fallback to 0)
+      let thumbnailUri = null;
+      try {
+        const { uri: thumbUri } = await VideoThumbnails.getThumbnailAsync(uri, {
+          time: 1000,
+          quality: 0.7,
+        });
+        thumbnailUri = thumbUri;
+      } catch (e) {
+        console.warn("Thumbnail generation failed, trying fallback...", e);
+        try {
+           const { uri: thumbUri } = await VideoThumbnails.getThumbnailAsync(uri, { time: 0 });
+           thumbnailUri = thumbUri;
+        } catch (e2) {
+           console.warn("Thumbnail fallback failed", e2);
+        }
       }
 
-      const { storageId } = await uploadResult.json();
+      // 2. Get Upload URLs (one for video, one for thumbnail if it exists)
+      const videoUploadUrl = await generateUploadUrl();
+      const thumbnailUploadUrl = thumbnailUri ? await generateUploadUrl() : null;
+
+      // 3. Upload Files
+      // Video upload
+      const videoFetch = fetch(uri).then(r => r.blob());
+      
+      const uploadPromises = [
+        videoFetch.then(blob => fetch(videoUploadUrl, {
+          method: "POST",
+          headers: { "Content-Type": "video/mp4" },
+          body: blob,
+        }).then(r => r.json()))
+      ];
+
+      // Thumbnail upload
+      if (thumbnailUploadUrl && thumbnailUri) {
+        const thumbFetch = fetch(thumbnailUri).then(r => r.blob());
+        uploadPromises.push(
+          thumbFetch.then(blob => fetch(thumbnailUploadUrl, {
+            method: "POST",
+            headers: { "Content-Type": "image/jpeg" },
+            body: blob,
+          }).then(r => r.json()))
+        );
+      }
+
+      const results = await Promise.all(uploadPromises);
+      const videoStorageId = results[0].storageId;
+      const thumbnailStorageId = results[1]?.storageId;
 
       // 4. Create Analysis
       const analysisId = await createAnalysis({
-        videoStorageId: storageId,
+        videoStorageId,
+        thumbnailStorageId, // Pass the optional thumbnail ID
         sport: selectedSport,
       });
 

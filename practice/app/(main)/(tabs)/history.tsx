@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { FlatList, TouchableOpacity, ImageBackground } from 'react-native';
+import { FlatList, TouchableOpacity, ImageBackground, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 import { usePaginatedQuery, useQuery } from 'convex/react';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -67,11 +67,18 @@ export default function HistoryScreen() {
         >
           {/* Thumbnail Area */}
           <Box h={180} bg="#F3F4F6" position="relative">
-            {/* Gradient Overlay Placeholder since we don't have real thumbnails yet */}
-            <LinearGradient
-              colors={['#F3F4F6', '#E5E7EB']}
-              style={{ position: 'absolute', width: '100%', height: '100%' }}
-            />
+            {item.thumbnailUrl ? (
+              <Image 
+                source={{ uri: item.thumbnailUrl }}
+                style={{ position: 'absolute', width: '100%', height: '100%', resizeMode: 'cover' }}
+              />
+            ) : (
+              /* Gradient Overlay Placeholder since we don't have real thumbnails yet */
+              <LinearGradient
+                colors={['#F3F4F6', '#E5E7EB']}
+                style={{ position: 'absolute', width: '100%', height: '100%' }}
+              />
+            )}
             
             {/* Play Button Overlay */}
             <Center position="absolute" w="100%" h="100%">

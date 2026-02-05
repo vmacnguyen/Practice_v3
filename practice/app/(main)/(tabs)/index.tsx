@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, TouchableOpacity, ImageBackground } from 'react-native';
+import { ScrollView, TouchableOpacity, ImageBackground, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useQuery } from 'convex/react';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -15,7 +15,7 @@ import {
   Icon,
   Spinner,
 } from '@gluestack-ui/themed';
-import { Plus, CheckCircle, AlertCircle, ChevronDown } from 'lucide-react-native';
+import { Plus, CheckCircle, AlertCircle, ChevronDown, Play } from 'lucide-react-native';
 import { SPORTS_CONFIG } from '../../../config/sports-config';
 
 export default function HomeScreen() {
@@ -115,7 +115,7 @@ export default function HomeScreen() {
                   elevation: 1,
                 }}
               >
-                <Text color="#155DFC" fontWeight="$bold" size="2xl" mb="$1">
+                <Text color="#155DFC" fontWeight="$bold" size="2xl" mb="">
                   {stats?.totalSessions || 0}
                 </Text>
                 <Text color="#4A5565" size="xs">Total Sessions</Text>
@@ -133,7 +133,7 @@ export default function HomeScreen() {
                   elevation: 1,
                 }}
               >
-                <Text color="#9810FA" fontWeight="$bold" size="2xl" mb="$1">
+                <Text color="#9810FA" fontWeight="$bold" size="2xl" mb="">
                   {Math.round((stats?.totalMinutes || 0) / 60)}h
                 </Text>
                 <Text color="#4A5565" size="xs">Total Time</Text>
@@ -168,11 +168,18 @@ export default function HomeScreen() {
                 {/* Thumbnail */}
                 <TouchableOpacity onPress={() => router.push(`/analysis/${stats.recentSession._id}`)}>
                   <Box h={192} bg="#E5E7EB" justifyContent="center" alignItems="center">
-                    {/* Placeholder gradient since we don't have real thumbnails yet */}
-                    <LinearGradient
-                      colors={['#E5E7EB', '#D1D5DC']}
-                      style={{ position: 'absolute', width: '100%', height: '100%' }}
-                    />
+                    {stats.recentSession.thumbnailUrl ? (
+                      <Image 
+                        source={{ uri: stats.recentSession.thumbnailUrl }}
+                        style={{ position: 'absolute', width: '100%', height: '100%', resizeMode: 'cover' }}
+                      />
+                    ) : (
+                      /* Placeholder gradient */
+                      <LinearGradient
+                        colors={['#E5E7EB', '#D1D5DC']}
+                        style={{ position: 'absolute', width: '100%', height: '100%' }}
+                      />
+                    )}
                     <Box
                       bg="rgba(255,255,255,0.3)"
                       rounded="$full"
@@ -181,8 +188,7 @@ export default function HomeScreen() {
                       justifyContent="center"
                       alignItems="center"
                     >
-                      <Icon as={Plus} color="white" size="xl" /> 
-                      {/* Should be play icon but using Plus as placeholder */}
+                      <Icon as={Play} color="white" size="xl" fill="white" /> 
                     </Box>
                   </Box>
                 </TouchableOpacity>
@@ -191,12 +197,12 @@ export default function HomeScreen() {
                 <Box p="$5">
                   <Box mb="$6">
                     <HStack alignItems="center" space="xs" mb="$3">
-                      <Box bg="#DCFCE7" rounded="$full" p="$1.5">
+                      <Box bg="#DCFCE7" rounded="$full" p=".5">
                         <Icon as={CheckCircle} color="#00A63E" size="xs" />
                       </Box>
                       <Heading size="md" color="#0A0A0A">What went well</Heading>
                     </HStack>
-                    <Text color="#364153" size="sm" ml="$1">
+                    <Text color="#364153" size="sm" ml="">
                       • {stats.recentSession.overallFeedback ? stats.recentSession.overallFeedback.split('.')[0] : 'Analysis completed'}
                     </Text>
                   </Box>
