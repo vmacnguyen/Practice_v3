@@ -17,6 +17,7 @@ import {
 } from '@gluestack-ui/themed';
 import { Plus, CheckCircle, AlertCircle, ChevronDown, Play } from 'lucide-react-native';
 import { SPORTS_CONFIG } from '../../../config/sports-config';
+import { formatDate } from '../../../utils/formatting';
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -24,7 +25,6 @@ export default function HomeScreen() {
   const stats = useQuery(api.analyses.getUserStats);
   
   const userInitials = user?.email ? user.email.substring(0, 2).toUpperCase() : 'JD';
-  const sportConfig = user?.preferredSport ? SPORTS_CONFIG[user.preferredSport] : null;
 
   if (stats === undefined) {
     return (
@@ -61,15 +61,6 @@ export default function HomeScreen() {
                 </LinearGradient>
               </TouchableOpacity>
             </HStack>
-            
-            {sportConfig && (
-              <HStack alignItems="center" space="xs">
-                <Text color="#4A5565" size="sm">
-                  {sportConfig.emoji} {sportConfig.name}
-                </Text>
-                <Icon as={ChevronDown} size="xs" color="#4A5565" />
-              </HStack>
-            )}
           </Box>
 
           <Box px="$6" mt={-16}>
@@ -107,6 +98,7 @@ export default function HomeScreen() {
                 flex={1}
                 rounded="$2xl"
                 p="$4"
+                alignItems="center"
                 style={{
                   shadowColor: '#000',
                   shadowOffset: { width: 0, height: 1 },
@@ -115,7 +107,7 @@ export default function HomeScreen() {
                   elevation: 1,
                 }}
               >
-                <Text color="#155DFC" fontWeight="$bold" size="2xl" mb="">
+                <Text color="#155DFC" fontWeight="$bold" size="2xl" mb="$1">
                   {stats?.totalSessions || 0}
                 </Text>
                 <Text color="#4A5565" size="xs">Total Sessions</Text>
@@ -125,6 +117,7 @@ export default function HomeScreen() {
                 flex={1}
                 rounded="$2xl"
                 p="$4"
+                alignItems="center"
                 style={{
                   shadowColor: '#000',
                   shadowOffset: { width: 0, height: 1 },
@@ -133,8 +126,8 @@ export default function HomeScreen() {
                   elevation: 1,
                 }}
               >
-                <Text color="#9810FA" fontWeight="$bold" size="2xl" mb="">
-                  {Math.round((stats?.totalMinutes || 0) / 60)}h
+                <Text color="#9810FA" fontWeight="$bold" size="2xl" mb="$1">
+                  {stats?.totalMinutes || 0}m
                 </Text>
                 <Text color="#4A5565" size="xs">Total Time</Text>
               </Box>
@@ -142,7 +135,7 @@ export default function HomeScreen() {
 
             {/* Latest Analysis */}
             <Heading size="md" color="#0A0A0A" mb="$4">
-              Latest Analysis
+              Your Last Practice Session
             </Heading>
 
             {stats?.recentSession ? (
@@ -158,11 +151,16 @@ export default function HomeScreen() {
                   elevation: 1,
                 }}
               >
-                {/* Date Header */}
+                {/* Session Info Header */}
                 <Box px="$5" pt="$4" pb="$2">
-                  <Text color="#6A7282" size="sm">
-                    {new Date(stats.recentSession.createdAt).toLocaleDateString()}
-                  </Text>
+                  <VStack space="xs">
+                    <Heading size="sm" color="#0A0A0A">
+                      {stats.recentSession.sport.charAt(0).toUpperCase() + stats.recentSession.sport.slice(1)} Session {stats.recentSession.sessionNumber}
+                    </Heading>
+                    <Text color="#6A7282" size="xs">
+                      {formatDate(stats.recentSession.createdAt)}
+                    </Text>
+                  </VStack>
                 </Box>
 
                 {/* Thumbnail */}
@@ -203,7 +201,7 @@ export default function HomeScreen() {
                       <Heading size="md" color="#0A0A0A">What went well</Heading>
                     </HStack>
                     <Text color="#364153" size="sm" ml="">
-                      • {stats.recentSession.overallFeedback ? stats.recentSession.overallFeedback.split('.')[0] : 'Analysis completed'}
+                      • {stats.recentSession.overallFeedback ? stats.recentSession.overallFeedback.split('.')[0] + '...' : 'Analysis completed'}
                     </Text>
                   </Box>
 

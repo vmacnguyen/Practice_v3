@@ -77,7 +77,7 @@ export default function ProfileScreen() {
               shadowRadius={2}
               elevation={1}
             >
-              <HStack space="md" alignItems="center" mb="$6">
+              <HStack space="md" alignItems="center">
                 <LinearGradient
                   colors={['#2B7FFF', '#9810FA']}
                   style={{
@@ -101,128 +101,7 @@ export default function ProfileScreen() {
                   </Text>
                 </VStack>
               </HStack>
-
-              <Divider bg="#E5E7EB" mb="$4" />
-
-              <HStack>
-                <VStack flex={1} alignItems="center">
-                  <Heading size="xl" color="#155DFC">
-                    {stats?.totalSessions || 0}
-                  </Heading>
-                  <Text size="xs" color="#4A5565">
-                    Sessions
-                  </Text>
-                </VStack>
-                <VStack flex={1} alignItems="center">
-                  <Heading size="xl" color="#00A63E">
-                    {/* Placeholder for streak */}
-                    12
-                  </Heading>
-                  <Text size="xs" color="#4A5565">
-                    Day Streak
-                  </Text>
-                </VStack>
-              </HStack>
             </Box>
-
-            {/* Settings */}
-            <VStack space="md">
-              <Heading size="md" color="#0A0A0A" mb="$1">
-                Settings
-              </Heading>
-
-              {/* Notifications */}
-              <Box
-                bg="white"
-                rounded="$2xl"
-                p="$4"
-                shadowColor="#000"
-                shadowOffset={{ width: 0, height: 1 }}
-                shadowOpacity={0.05}
-                shadowRadius={2}
-                elevation={1}
-              >
-                <HStack alignItems="center" space="md">
-                  <Box bg="#DBEAFE" p="$3" rounded="$full">
-                    <Icon as={Bell} color="#155DFC" size="md" />
-                  </Box>
-                  <VStack flex={1}>
-                    <Text fontWeight="$medium" color="#0A0A0A">
-                      Notifications
-                    </Text>
-                    <Text size="sm" color="#4A5565">
-                      Push notifications enabled
-                    </Text>
-                  </VStack>
-                  <Switch
-                    trackColor={{ false: '#767577', true: '#155DFC' }}
-                    thumbColor={'#f4f3f4'}
-                    value={true}
-                  />
-                </HStack>
-              </Box>
-
-              {/* Preferences */}
-              <TouchableOpacity>
-                <Box
-                  bg="white"
-                  rounded="$2xl"
-                  p="$4"
-                  shadowColor="#000"
-                  shadowOffset={{ width: 0, height: 1 }}
-                  shadowOpacity={0.05}
-                  shadowRadius={2}
-                  elevation={1}
-                >
-                  <HStack alignItems="center" space="md">
-                    <Box bg="#F3E8FF" p="$3" rounded="$full">
-                      <Icon as={Settings} color="#9810FA" size="md" />
-                    </Box>
-                    <VStack flex={1}>
-                      <Text fontWeight="$medium" color="#0A0A0A">
-                        Preferences
-                      </Text>
-                      <Text size="sm" color="#4A5565">
-                        Customize your experience
-                      </Text>
-                    </VStack>
-                    <Icon as={ChevronRight} color="#D1D5DC" size="md" />
-                  </HStack>
-                </Box>
-              </TouchableOpacity>
-            </VStack>
-
-            {/* Help & Support */}
-            <VStack space="md">
-              <Heading size="md" color="#0A0A0A" mb="$1">
-                Help & Support
-              </Heading>
-
-              <TouchableOpacity>
-                <Box
-                  bg="white"
-                  rounded="$2xl"
-                  p="$4"
-                  shadowColor="#000"
-                  shadowOffset={{ width: 0, height: 1 }}
-                  shadowOpacity={0.05}
-                  shadowRadius={2}
-                  elevation={1}
-                >
-                  <HStack alignItems="center" space="md">
-                    <Box bg="#DBEAFE" p="$3" rounded="$full">
-                      <Icon as={HelpCircle} color="#155DFC" size="md" />
-                    </Box>
-                    <VStack flex={1}>
-                      <Text fontWeight="$medium" color="#0A0A0A">
-                        Get Assistance
-                      </Text>
-                    </VStack>
-                    <Icon as={ChevronRight} color="#D1D5DC" size="md" />
-                  </HStack>
-                </Box>
-              </TouchableOpacity>
-            </VStack>
 
             {/* Log Out */}
             <TouchableOpacity onPress={handleLogout} style={{ marginTop: 24 }}>

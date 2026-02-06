@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Alert, TouchableOpacity } from 'react-native';
+import { Alert, TouchableOpacity, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useQuery, useMutation } from 'convex/react';
@@ -16,27 +16,22 @@ import {
   Select, SelectTrigger, SelectInput, SelectIcon,
   SelectPortal, SelectBackdrop, SelectContent, SelectDragIndicatorWrapper,
   SelectDragIndicator, SelectItem, Icon, ChevronDownIcon,
-  HStack, Spinner, Center
+  HStack, Spinner, Center, Button, ButtonText
 } from '@gluestack-ui/themed';
-import { Upload, Video as VideoIcon, AlertCircle } from 'lucide-react-native';
+import { Upload, Video as VideoIcon, AlertCircle, ArrowLeft } from 'lucide-react-native';
 
 export default function PracticeScreen() {
   const router = useRouter();
-  const user = useQuery(api.auth.getCurrentUser);
   const generateUploadUrl = useMutation(api.storage.generateUploadUrl);
   const createAnalysis = useMutation(api.analyses.createAnalysis);
 
   const [selectedSport, setSelectedSport] = useState<string>('');
   const [isRecorderOpen, setIsRecorderOpen] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  const [tempVideoUri, setTempVideoUri] = useState<string | null>(null);
+  const [tempThumbnailUri, setTempThumbnailUri] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (user?.preferredSport && !selectedSport) {
-      setSelectedSport(user.preferredSport);
-    }
-  }, [user]);
-
-  const handleVideoSelected = async (uri: string) => {
+  const handleVideoAcquired = async (uri: string) => {
     setIsRecorderOpen(false);
 
     // 1. Validate
@@ -46,15 +41,8 @@ export default function PracticeScreen() {
       return;
     }
 
-    if (!selectedSport) {
-      Alert.alert('Select Sport', 'Please select a sport before uploading.');
-      return;
-    }
-
     try {
-      setIsUploading(true);
-
-      // Generate Thumbnail (attempt at 1s mark, fallback to 0)
+      // Generate Thumbnail
       let thumbnailUri = null;
       try {
         const { uri: thumbUri } = await VideoThumbnails.getThumbnailAsync(uri, {
@@ -71,6 +59,27 @@ export default function PracticeScreen() {
            console.warn("Thumbnail fallback failed", e2);
         }
       }
+      
+      setTempVideoUri(uri);
+      setTempThumbnailUri(thumbnailUri);
+    } catch (e) {
+      console.error("Error processing video", e);
+      Alert.alert("Error", "Could not process selected video");
+    }
+  };
+
+  const handleAnalyze = async () => {
+    if (!tempVideoUri || isUploading) return;
+
+    if (!selectedSport) {
+      Alert.alert('Select Sport', 'Please select a sport before uploading.');
+      return;
+    }
+
+    try {
+      setIsUploading(true);
+      const uri = tempVideoUri;
+      const thumbnailUri = tempThumbnailUri;
 
       // 2. Get Upload URLs (one for video, one for thumbnail if it exists)
       const videoUploadUrl = await generateUploadUrl();
@@ -112,6 +121,8 @@ export default function PracticeScreen() {
       });
 
       // 5. Navigate
+      setTempVideoUri(null);
+      setTempThumbnailUri(null);
       router.push(`/analysis/${analysisId}`);
 
     } catch (error) {
@@ -131,18 +142,9 @@ export default function PracticeScreen() {
     });
 
     if (!result.canceled && result.assets && result.assets.length > 0) {
-      handleVideoSelected(result.assets[0].uri);
+      handleVideoAcquired(result.assets[0].uri);
     }
   };
-
-  if (isRecorderOpen) {
-    return (
-      <VideoRecorder
-        onVideoRecorded={handleVideoSelected}
-        onCancel={() => setIsRecorderOpen(false)}
-      />
-    );
-  }
 
   if (isUploading) {
     return (
@@ -157,6 +159,113 @@ export default function PracticeScreen() {
       </Box>
     );
   }
+
+  if (isRecorderOpen) {
+    return (
+      <VideoRecorder
+        onVideoRecorded={handleVideoAcquired}
+        onCancel={() => setIsRecorderOpen(false)}
+      />
+    );
+  }
+
+  if (tempVideoUri) {
+    return (
+      <Box flex={1} bg="#F9FAFB">
+        <SafeAreaView style={{ flex: 1 }}>
+          <VStack space="xl" p="$6" flex={1}>
+             {/* Header with Back Button */}
+            <HStack alignItems="center" space="md" pt="$2">
+              <TouchableOpacity onPress={() => {
+                  setTempVideoUri(null);
+                  setTempThumbnailUri(null);
+              }}>
+                <Icon as={ArrowLeft} size="xl" color="#0A0A0A" />
+              </TouchableOpacity>
+              <Heading size="2xl" color="#0A0A0A">New Analysis</Heading>
+            </HStack>
+
+            {/* Video Preview */}
+            <Box 
+                bg="black" 
+                rounded="$xl" 
+                height={200} 
+                width="100%" 
+                overflow="hidden"
+                justifyContent="center"
+                alignItems="center"
+            >
+                {tempThumbnailUri ? (
+                    <Image 
+                        source={{ uri: tempThumbnailUri }} 
+                        style={{ width: '100%', height: '100%' }} 
+                        resizeMode="cover"
+                    />
+                ) : (
+                    <Icon as={VideoIcon} size="xl" color="white" />
+                )}
+            </Box>
+
+            {/* Sport Selector */}
+            <VStack space="xs" mt="$4">
+                <Text size="sm" fontWeight="$semibold" color="#364153">Select Sport</Text>
+                <Select
+                  selectedValue={selectedSport}
+                  onValueChange={setSelectedSport}
+                >
+                  <SelectTrigger variant="outline" size="lg" borderColor="#D1D5DC" rounded="$lg" bg="white">
+                    <SelectInput placeholder="Select sport" color="#0A0A0A" />
+                    <SelectIcon mr="$3" as={ChevronDownIcon} />
+                  </SelectTrigger>
+                  <SelectPortal>
+                    <SelectBackdrop />
+                    <SelectContent>
+                      <SelectDragIndicatorWrapper>
+                        <SelectDragIndicator />
+                      </SelectDragIndicatorWrapper>
+                      {SPORTS_LIST.map((sport) => (
+                        <SelectItem
+                          key={sport.id}
+                          label={`${sport.emoji} ${sport.name}`}
+                          value={sport.id}
+                        />
+                      ))}
+                    </SelectContent>
+                  </SelectPortal>
+                </Select>
+            </VStack>
+
+            {/* Action Button */}
+            <VStack space="md" mt="$8">
+                <TouchableOpacity 
+                  onPress={handleAnalyze}
+                  disabled={!selectedSport || isUploading}
+                >
+                  <LinearGradient
+                    colors={['#155DFC', '#9810FA']}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 1 }}
+                    style={{
+                      paddingVertical: 16,
+                      borderRadius: 12,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      opacity: !selectedSport || isUploading ? 0.5 : 1,
+                    }}
+                  >
+                    <Text color="white" fontWeight="$bold" size="lg">
+                      Analyze Practice
+                    </Text>
+                  </LinearGradient>
+                </TouchableOpacity>
+            </VStack>
+
+          </VStack>
+        </SafeAreaView>
+      </Box>
+    );
+  }
+
 
   return (
     <Box flex={1} bg="#F9FAFB">
@@ -204,34 +313,7 @@ export default function PracticeScreen() {
             </VStack>
           </Box>
 
-          {/* Sport Selector */}
-          <VStack space="xs">
-            <Text size="sm" fontWeight="$semibold" color="#364153">Select Sport</Text>
-            <Select
-              selectedValue={selectedSport}
-              onValueChange={setSelectedSport}
-            >
-              <SelectTrigger variant="outline" size="lg" borderColor="#D1D5DC" rounded="$lg" bg="white">
-                <SelectInput placeholder="Select option" color="#0A0A0A" />
-                <SelectIcon mr="$3" as={ChevronDownIcon} />
-              </SelectTrigger>
-              <SelectPortal>
-                <SelectBackdrop />
-                <SelectContent>
-                  <SelectDragIndicatorWrapper>
-                    <SelectDragIndicator />
-                  </SelectDragIndicatorWrapper>
-                  {SPORTS_LIST.map((sport) => (
-                    <SelectItem
-                      key={sport.id}
-                      label={`${sport.emoji} ${sport.name}`}
-                      value={sport.id}
-                    />
-                  ))}
-                </SelectContent>
-              </SelectPortal>
-            </Select>
-          </VStack>
+
 
           {/* Tips Section */}
           <Box mt="$4">

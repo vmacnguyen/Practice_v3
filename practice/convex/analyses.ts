@@ -93,7 +93,9 @@ export const getAnalysisHistory = query({
 
     const results = await ctx.db
       .query("analyses")
-      .withIndex("by_user_and_created", (q) => q.eq("userId", userId))
+      .withIndex("by_user_status_created", (q) => 
+        q.eq("userId", userId).eq("status", "completed")
+      )
       .order("desc")
       .paginate(args.paginationOpts);
 

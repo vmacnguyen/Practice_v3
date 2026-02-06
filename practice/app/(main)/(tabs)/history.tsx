@@ -19,7 +19,7 @@ import {
   HStack,
 } from '@gluestack-ui/themed';
 import { Play } from 'lucide-react-native';
-import { formatDateShort } from '../../../utils/formatting';
+import { formatDate } from '../../../utils/formatting';
 
 const ITEMS_PER_PAGE = 10;
 
@@ -94,56 +94,16 @@ export default function HistoryScreen() {
                 <Icon as={Play} size="md" color="#101828" fill="#101828" />
               </Box>
             </Center>
-
-            {/* Duration Label - Placeholder */}
-            <Box 
-              position="absolute" 
-              bottom="$2" 
-              right="$2" 
-              bg="rgba(0,0,0,0.7)" 
-              px="$2" 
-              py="$1" 
-              rounded="$sm"
-            >
-              <Text color="white" size="xs" fontWeight="$medium">
-                0:45
-              </Text>
-            </Box>
           </Box>
 
           {/* Content Area */}
           <VStack p="$4" space="xs">
             <Heading size="md" color="#0A0A0A" numberOfLines={1}>
-              {sportName} Session
+              {sportName} Session {item.sessionNumber}
             </Heading>
             <Text color="#6A7282" size="sm">
-              {formatDateShort(item.createdAt)} • Session {item.sessionNumber}
+              {formatDate(item.createdAt)}
             </Text>
-            
-            {/* Status/Badges */}
-            <HStack space="xs" mt="$2">
-              {item.status === 'completed' && (
-                <Box bg="#F3F4F6" px="$2" py="$1" rounded="$md">
-                  <Text size="xs" color="#364153" fontWeight="$medium">
-                    Analysis Ready
-                  </Text>
-                </Box>
-              )}
-              {item.status === 'processing' && (
-                <Box bg="#DBEAFE" px="$2" py="$1" rounded="$md">
-                  <Text size="xs" color="#155DFC" fontWeight="$medium">
-                    Processing
-                  </Text>
-                </Box>
-              )}
-              {item.status === 'failed' && (
-                <Box bg="#FEE2E2" px="$2" py="$1" rounded="$md">
-                  <Text size="xs" color="#DC2626" fontWeight="$medium">
-                    Failed
-                  </Text>
-                </Box>
-              )}
-            </HStack>
           </VStack>
         </Box>
       </TouchableOpacity>
