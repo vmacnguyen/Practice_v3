@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Alert, TouchableOpacity, Image } from 'react-native';
+import { Alert, TouchableOpacity, Image, Platform } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useQuery, useMutation } from 'convex/react';
@@ -28,47 +28,118 @@ export default function PracticeScreen() {
   const [selectedSport, setSelectedSport] = useState<string>('');
   const [isRecorderOpen, setIsRecorderOpen] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
   const [tempVideoUri, setTempVideoUri] = useState<string | null>(null);
   const [tempThumbnailUri, setTempThumbnailUri] = useState<string | null>(null);
 
+  console.log('PracticeScreen render:', { isRecorderOpen, isUploading, isProcessing, tempVideoUri: !!tempVideoUri });
+
   const handleVideoAcquired = async (uri: string) => {
-    setIsRecorderOpen(false);
+    console.log('handleVideoAcquired started with URI:', uri);
+    setIsProcessing(true);
+    // recorder will be closed at the end of processing
 
     // 1. Validate
-    const validation = await validateVideo(uri);
-    if (!validation.valid) {
-      Alert.alert('Invalid Video', validation.error);
-      return;
+    try {
+      const validation = await validateVideo(uri);
+      if (!validation.valid) {
+        console.log('Video validation failed:', validation.error);
+        Alert.alert('Invalid Video', validation.error);
+        setIsRecorderOpen(false);
+        return;
+      }
+    } catch (valErr) {
+      console.error('Error during video validation:', valErr);
+      if (Platform.OS !== 'web') {
+        setIsRecorderOpen(false);
+        return;
+      }
     }
 
     try {
       // Generate Thumbnail
       let thumbnailUri = null;
-      try {
-        const { uri: thumbUri } = await VideoThumbnails.getThumbnailAsync(uri, {
-          time: 1000,
-          quality: 0.7,
-        });
-        thumbnailUri = thumbUri;
-      } catch (e) {
-        console.warn("Thumbnail generation failed, trying fallback...", e);
+      
+      // VideoThumbnails is not supported on web
+      if (Platform.OS !== 'web') {
+        console.log('Generating thumbnail for native platform');
         try {
-           const { uri: thumbUri } = await VideoThumbnails.getThumbnailAsync(uri, { time: 0 });
-           thumbnailUri = thumbUri;
-        } catch (e2) {
-           console.warn("Thumbnail fallback failed", e2);
+          const { uri: thumbUri } = await VideoThumbnails.getThumbnailAsync(uri, {
+            time: 1000,
+            quality: 0.7,
+          });
+          thumbnailUri = thumbUri;
+        } catch (e) {
+          console.warn("Thumbnail generation failed, trying fallback...", e);
+          try {
+             const { uri: thumbUri } = await VideoThumbnails.getThumbnailAsync(uri, { time: 0 });
+             thumbnailUri = thumbUri;
+          } catch (e2) {
+             console.warn("Thumbnail fallback failed", e2);
+          }
+        }
+      } else {
+        console.log('Generating thumbnail on web for URI:', uri);
+        try {
+          thumbnailUri = await new Promise<string | null>((resolve) => {
+            const video = document.createElement('video');
+            video.src = uri;
+            video.crossOrigin = 'anonymous';
+            video.muted = true;
+            video.playsInline = true;
+            
+            video.onloadedmetadata = () => {
+              console.log('Web video metadata loaded, seeking...');
+              video.currentTime = 0.5;
+            };
+
+            video.onseeked = () => {
+              console.log('Web video seeked, capturing frame...');
+              const canvas = document.createElement('canvas');
+              canvas.width = video.videoWidth;
+              canvas.height = video.videoHeight;
+              const ctx = canvas.getContext('2d');
+              if (ctx) {
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
+                console.log('Web thumbnail generated successfully');
+                resolve(dataUrl);
+              } else {
+                console.error('Could not get canvas context');
+                resolve(null);
+              }
+            };
+
+            video.onerror = (e) => {
+              console.error('Error loading video for thumbnail on web', e);
+              resolve(null);
+            };
+            
+            setTimeout(() => {
+              console.warn('Web thumbnail generation timed out');
+              resolve(null);
+            }, 10000);
+          });
+        } catch (webErr) {
+          console.error('Web thumbnail error:', webErr);
         }
       }
       
+      console.log('Success processing video. Setting temp URIs and closing recorder.');
       setTempVideoUri(uri);
       setTempThumbnailUri(thumbnailUri);
+      setIsRecorderOpen(false);
     } catch (e) {
       console.error("Error processing video", e);
       Alert.alert("Error", "Could not process selected video");
+      setIsRecorderOpen(false);
+    } finally {
+      setIsProcessing(false);
     }
   };
 
   const handleAnalyze = async () => {
+    console.log('handleAnalyze started. Sport:', selectedSport, 'Video:', tempVideoUri);
     if (!tempVideoUri || isUploading) return;
 
     if (!selectedSport) {
@@ -81,46 +152,52 @@ export default function PracticeScreen() {
       const uri = tempVideoUri;
       const thumbnailUri = tempThumbnailUri;
 
-      // 2. Get Upload URLs (one for video, one for thumbnail if it exists)
+      console.log('Generating upload URLs...');
       const videoUploadUrl = await generateUploadUrl();
       const thumbnailUploadUrl = thumbnailUri ? await generateUploadUrl() : null;
 
-      // 3. Upload Files
-      // Video upload
+      console.log('Fetching video blob...');
       const videoFetch = fetch(uri).then(r => r.blob());
       
       const uploadPromises = [
-        videoFetch.then(blob => fetch(videoUploadUrl, {
-          method: "POST",
-          headers: { "Content-Type": "video/mp4" },
-          body: blob,
-        }).then(r => r.json()))
+        videoFetch.then(blob => {
+          console.log('Uploading video blob. Size:', blob.size);
+          return fetch(videoUploadUrl, {
+            method: "POST",
+            headers: { "Content-Type": "video/mp4" },
+            body: blob,
+          }).then(r => r.json());
+        })
       ];
 
-      // Thumbnail upload
       if (thumbnailUploadUrl && thumbnailUri) {
+        console.log('Fetching thumbnail blob...');
         const thumbFetch = fetch(thumbnailUri).then(r => r.blob());
         uploadPromises.push(
-          thumbFetch.then(blob => fetch(thumbnailUploadUrl, {
-            method: "POST",
-            headers: { "Content-Type": "image/jpeg" },
-            body: blob,
-          }).then(r => r.json()))
+          thumbFetch.then(blob => {
+            console.log('Uploading thumbnail blob. Size:', blob.size);
+            return fetch(thumbnailUploadUrl, {
+              method: "POST",
+              headers: { "Content-Type": "image/jpeg" },
+              body: blob,
+            }).then(r => r.json());
+          })
         );
       }
 
+      console.log('Waiting for uploads to complete...');
       const results = await Promise.all(uploadPromises);
       const videoStorageId = results[0].storageId;
       const thumbnailStorageId = results[1]?.storageId;
 
-      // 4. Create Analysis
+      console.log('Creating analysis in database...');
       const analysisId = await createAnalysis({
         videoStorageId,
-        thumbnailStorageId, // Pass the optional thumbnail ID
+        thumbnailStorageId, 
         sport: selectedSport,
       });
 
-      // 5. Navigate
+      console.log('Analysis created! ID:', analysisId);
       setTempVideoUri(null);
       setTempThumbnailUri(null);
       router.push(`/analysis/${analysisId}`);
@@ -146,13 +223,15 @@ export default function PracticeScreen() {
     }
   };
 
-  if (isUploading) {
+  if (isUploading || isProcessing) {
     return (
       <Box flex={1} bg="#F9FAFB" justifyContent="center" alignItems="center" p="$6">
         <Box bg="#DBEAFE" p="$6" rounded="$full" mb="$6">
           <Spinner size="large" color="#155DFC" />
         </Box>
-        <Heading size="xl" color="#0A0A0A" mb="$2">Analyzing your video...</Heading>
+        <Heading size="xl" color="#0A0A0A" mb="$2">
+          {isUploading ? 'Analyzing your video...' : 'Processing video...'}
+        </Heading>
         <Text textAlign="center" color="#4A5565">
           This will just take a moment
         </Text>
@@ -164,7 +243,10 @@ export default function PracticeScreen() {
     return (
       <VideoRecorder
         onVideoRecorded={handleVideoAcquired}
-        onCancel={() => setIsRecorderOpen(false)}
+        onCancel={() => {
+          console.log('VideoRecorder onCancel triggered');
+          setIsRecorderOpen(false);
+        }}
       />
     );
   }

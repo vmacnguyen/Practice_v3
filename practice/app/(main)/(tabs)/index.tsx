@@ -164,7 +164,11 @@ export default function HomeScreen() {
                 </Box>
 
                 {/* Thumbnail */}
-                <TouchableOpacity onPress={() => router.push(`/analysis/${stats.recentSession._id}`)}>
+                <TouchableOpacity onPress={() => {
+                  if (stats.recentSession?._id) {
+                    router.push(`/analysis/${stats.recentSession._id}`);
+                  }
+                }}>
                   <Box h={192} bg="#E5E7EB" justifyContent="center" alignItems="center">
                     {stats.recentSession.thumbnailUrl ? (
                       <Image 
@@ -195,18 +199,22 @@ export default function HomeScreen() {
                 <Box p="$5">
                   <Box mb="$6">
                     <HStack alignItems="center" space="xs" mb="$3">
-                      <Box bg="#DCFCE7" rounded="$full" p=".5">
+                      <Box bg="#DCFCE7" rounded="$full" p="$0.5">
                         <Icon as={CheckCircle} color="#00A63E" size="xs" />
                       </Box>
                       <Heading size="md" color="#0A0A0A">What went well</Heading>
                     </HStack>
-                    <Text color="#364153" size="sm" ml="">
+                    <Text color="#364153" size="sm" ml="$0">
                       • {stats.recentSession.overallFeedback ? stats.recentSession.overallFeedback.split('.')[0] + '...' : 'Analysis completed'}
                     </Text>
                   </Box>
 
                   <TouchableOpacity
-                    onPress={() => router.push(`/analysis/${stats.recentSession._id}`)}
+                    onPress={() => {
+                      if (stats.recentSession?._id) {
+                        router.push(`/analysis/${stats.recentSession._id}`);
+                      }
+                    }}
                   >
                     <Box
                       bg="#155DFC"
