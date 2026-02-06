@@ -13,8 +13,8 @@ vi.mock("./adapters/geminiAdapter", () => ({
 describe("Analysis Service", () => {
   const setup = async () => {
     const t = convexTest(schema);
-    const userId = await t.mutation(api.auth.signUp, {
-      email: "pro@example.com",
+    const userId = await t.mutation((api.auth as any).signUp, {
+      email: "test@example.com",
       password: "password123",
     });
     

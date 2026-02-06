@@ -1,21 +1,29 @@
 import { v } from "convex/values";
 import { mutation, query, internalMutation, internalQuery } from "./_generated/server";
-import { getAuthUserId } from "@convex-dev/auth/server";
+import { getUserId } from "./auth";
 import { ConvexError } from "convex/values";
 import { internal } from "./_generated/api";
+import { paginationOptsValidator } from "convex/server";
 
 // Create a new analysis record (pending state)
 export const createAnalysis = mutation({
   args: {
     videoStorageId: v.id("_storage"),
+    thumbnailStorageId: v.optional(v.id("_storage")),
     sport: v.string(),
   },
   handler: async (ctx, args) => {
-    const userId = await getAuthUserId(ctx);
+    const userId = await getUserId(ctx);
     if (!userId) throw new ConvexError("Not authenticated");
 
     const videoUrl = await ctx.storage.getUrl(args.videoStorageId);
     if (!videoUrl) throw new ConvexError("Video not found");
+    
+    // Get thumbnail URL if ID is provided
+    let thumbnailUrl = null;
+    if (args.thumbnailStorageId) {
+      thumbnailUrl = await ctx.storage.getUrl(args.thumbnailStorageId);
+    }
 
     // Calculate session number for today
     const startOfDay = new Date();
@@ -34,6 +42,7 @@ export const createAnalysis = mutation({
     const analysisId = await ctx.db.insert("analyses", {
       userId,
       videoStorageId: args.videoStorageId,
+      thumbnailStorageId: args.thumbnailStorageId,
       videoUrl,
       sport: args.sport,
       identifiedActions: [],
@@ -57,39 +66,50 @@ export const createAnalysis = mutation({
 export const getAnalysis = query({
   args: { analysisId: v.id("analyses") },
   handler: async (ctx, args) => {
-    const userId = await getAuthUserId(ctx);
+    const userId = await getUserId(ctx);
     if (!userId) throw new ConvexError("Not authenticated");
 
     const analysis = await ctx.db.get(args.analysisId);
     if (!analysis) throw new ConvexError("Analysis not found");
     if (analysis.userId !== userId) throw new ConvexError("Unauthorized");
 
-    return analysis;
+    let thumbnailUrl = null;
+    if (analysis.thumbnailStorageId) {
+      thumbnailUrl = await ctx.storage.getUrl(analysis.thumbnailStorageId);
+    }
+
+    return { ...analysis, thumbnailUrl };
   },
 });
 
 // Get paginated analysis history
 export const getAnalysisHistory = query({
   args: {
-    cursor: v.optional(v.string()),
-    limit: v.optional(v.number()),
+    paginationOpts: paginationOptsValidator,
   },
   handler: async (ctx, args) => {
-    const userId = await getAuthUserId(ctx);
+    const userId = await getUserId(ctx);
     if (!userId) throw new ConvexError("Not authenticated");
 
-    const limit = args.limit || 10;
-
-    const paginationResult = await ctx.db
+    const results = await ctx.db
       .query("analyses")
-      .withIndex("by_user_and_created", (q) => q.eq("userId", userId))
+      .withIndex("by_user_status_created", (q) => 
+        q.eq("userId", userId).eq("status", "completed")
+      )
       .order("desc")
-      .paginate({ cursor: args.cursor || null, numItems: limit });
+      .paginate(args.paginationOpts);
 
     return {
-      items: paginationResult.page,
-      cursor: paginationResult.continueCursor,
-      hasMore: !paginationResult.isDone,
+      ...results,
+      page: await Promise.all(
+        results.page.map(async (analysis) => {
+          let thumbnailUrl = null;
+          if (analysis.thumbnailStorageId) {
+            thumbnailUrl = await ctx.storage.getUrl(analysis.thumbnailStorageId);
+          }
+          return { ...analysis, thumbnailUrl };
+        })
+      ),
     };
   },
 });
@@ -98,7 +118,7 @@ export const getAnalysisHistory = query({
 export const getUserStats = query({
   args: {},
   handler: async (ctx) => {
-    const userId = await getAuthUserId(ctx);
+    const userId = await getUserId(ctx);
     if (!userId) return null;
 
     const analyses = await ctx.db
@@ -107,12 +127,27 @@ export const getUserStats = query({
       .collect();
 
     const completedAnalyses = analyses.filter((a) => a.status === "completed");
+    
+    // Sort by creation time (descending) to get the most recent one reliably
+    // Note: 'collect()' order isn't guaranteed without an index sort, but .filter preserves order.
+    // Ideally we'd use a separate query for recentSession, but this is fine for now.
+    const sortedCompleted = completedAnalyses.sort((a, b) => b.createdAt - a.createdAt);
+    const recentSession = sortedCompleted[0] || null;
+
+    let recentSessionWithUrl = null;
+    if (recentSession) {
+      let thumbnailUrl = null;
+      if (recentSession.thumbnailStorageId) {
+        thumbnailUrl = await ctx.storage.getUrl(recentSession.thumbnailStorageId);
+      }
+      recentSessionWithUrl = { ...recentSession, thumbnailUrl };
+    }
 
     return {
       totalSessions: completedAnalyses.length,
       // Approximate minutes (1 min max per video)
       totalMinutes: completedAnalyses.length,
-      recentSession: completedAnalyses[completedAnalyses.length - 1] || null,
+      recentSession: recentSessionWithUrl,
     };
   },
 });
@@ -121,7 +156,7 @@ export const getUserStats = query({
 export const retryAnalysis = mutation({
   args: { analysisId: v.id("analyses") },
   handler: async (ctx, args) => {
-    const userId = await getAuthUserId(ctx);
+    const userId = await getUserId(ctx);
     if (!userId) throw new ConvexError("Not authenticated");
 
     const analysis = await ctx.db.get(args.analysisId);
