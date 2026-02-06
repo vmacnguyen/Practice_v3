@@ -74,7 +74,7 @@ export default function AnalysisDetailScreen() {
       <SafeAreaView style={{ flex: 1 }}>
         {/* Header */}
         <Box px="$6" pt="$2" pb="$4" bg="white" borderBottomWidth={1} borderBottomColor="#F3F4F6">
-          <TouchableOpacity onPress={() => router.back()} style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}>
+          <TouchableOpacity onPress={() => router.push('/history')} style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}>
             <Icon as={ChevronLeft} color="#155DFC" size="md" />
             <Text color="#155DFC" fontWeight="$medium" ml="$1">History</Text>
           </TouchableOpacity>
