@@ -4,11 +4,9 @@ import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useQuery, useMutation } from 'convex/react';
 import * as ImagePicker from 'expo-image-picker';
-import * as FileSystem from 'expo-file-system';
-import * as VideoThumbnails from 'expo-video-thumbnails';
 import { api } from '../../../convex/_generated/api';
 import VideoRecorder from '../../../components/video/VideoRecorder';
-import { validateVideo } from '../../../utils/video';
+import { validateVideo, generateThumbnail } from '../../../utils/video';
 import { SPORTS_LIST } from '../../../config/sports-config';
 import { LinearGradient } from 'expo-linear-gradient';
 import {
@@ -57,73 +55,15 @@ export default function PracticeScreen() {
     }
 
     try {
-      // Generate Thumbnail
-      let thumbnailUri = null;
+      console.log('Generating thumbnail...');
+      const thumbnailUri = await generateThumbnail(uri, {
+        time: 1000,
+        quality: 0.7,
+        width: 320,
+        height: 180,
+      });
       
-      // VideoThumbnails is not supported on web
-      if (Platform.OS !== 'web') {
-        console.log('Generating thumbnail for native platform');
-        try {
-          const { uri: thumbUri } = await VideoThumbnails.getThumbnailAsync(uri, {
-            time: 1000,
-            quality: 0.7,
-          });
-          thumbnailUri = thumbUri;
-        } catch (e) {
-          console.warn("Thumbnail generation failed, trying fallback...", e);
-          try {
-             const { uri: thumbUri } = await VideoThumbnails.getThumbnailAsync(uri, { time: 0 });
-             thumbnailUri = thumbUri;
-          } catch (e2) {
-             console.warn("Thumbnail fallback failed", e2);
-          }
-        }
-      } else {
-        console.log('Generating thumbnail on web for URI:', uri);
-        try {
-          thumbnailUri = await new Promise<string | null>((resolve) => {
-            const video = document.createElement('video');
-            video.src = uri;
-            video.crossOrigin = 'anonymous';
-            video.muted = true;
-            video.playsInline = true;
-            
-            video.onloadedmetadata = () => {
-              console.log('Web video metadata loaded, seeking...');
-              video.currentTime = 0.5;
-            };
-
-            video.onseeked = () => {
-              console.log('Web video seeked, capturing frame...');
-              const canvas = document.createElement('canvas');
-              canvas.width = video.videoWidth;
-              canvas.height = video.videoHeight;
-              const ctx = canvas.getContext('2d');
-              if (ctx) {
-                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-                const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
-                console.log('Web thumbnail generated successfully');
-                resolve(dataUrl);
-              } else {
-                console.error('Could not get canvas context');
-                resolve(null);
-              }
-            };
-
-            video.onerror = (e) => {
-              console.error('Error loading video for thumbnail on web', e);
-              resolve(null);
-            };
-            
-            setTimeout(() => {
-              console.warn('Web thumbnail generation timed out');
-              resolve(null);
-            }, 10000);
-          });
-        } catch (webErr) {
-          console.error('Web thumbnail error:', webErr);
-        }
-      }
+      console.log('Thumbnail generation result:', thumbnailUri ? 'Success' : 'Failed');
       
       console.log('Success processing video. Setting temp URIs and closing recorder.');
       setTempVideoUri(uri);
