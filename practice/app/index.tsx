@@ -56,7 +56,7 @@ export default function Index() {
 
         console.log("[DEBUG] Sending token to Debug Endpoint...");
         // HTTP Actions are hosted on the Site URL
-        const siteUrl = process.env.EXPO_PUBLIC_CONVEX_SITE_URL;
+        const siteUrl = ENV.CONVEX_SITE_URL;
         const response = await fetch(`${siteUrl}/debug-token`, {
           headers: {
             Authorization: `Bearer ${token}`,
